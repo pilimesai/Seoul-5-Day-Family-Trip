@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   MapPin, 
   Utensils, 
@@ -275,6 +275,12 @@ export default function App() {
                       <h3 className="font-bold text-stone-800">{item.name}</h3>
                       <p className="text-xs text-rose-600 font-bold mb-1">{item.loc}</p>
                       <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
+                      {item.code && (
+                        <div className="mt-3 p-2 bg-amber-50 border border-dashed border-amber-300 rounded flex items-center justify-between">
+                          <span className="text-[10px] font-bold text-amber-700 uppercase">Promo Code</span>
+                          <span className="text-sm font-mono font-bold text-amber-900">{item.code}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

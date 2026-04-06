@@ -7,7 +7,7 @@ export const ITINERARY_DATA: DayData[] = [
     highlights: "AREX、帝王蟹、人生四格",
     sections: [
       { time: "11:00", text: "抵達仁川機場，搭乘 <strong>AREX 普通車</strong> 往弘大入口站。" },
-      { time: "15:00", text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，挑選現蒸帝王蟹（非牛羊海鮮大餐）。" },
+      { time: "15:00", text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹（非牛羊海鮮大餐）。" },
       { time: "18:00", text: "弘大商圈逛街：SPAO (買童裝)、Olive Young (補藥妝)、全家拍「人生四格」照片。" }
     ]
   },
@@ -61,7 +61,7 @@ export const MAP_LOCATIONS: MapGroup[] = [
   {
     day: "Day 1-2 弘大與周邊",
     locations: [
-      { name: "🦀 麻浦農水產市場", q: "Mapo Agricultural and Marine Products Market" },
+      { name: "🦀 麻浦農水產市場 (3112攤位)", q: "Mapo Agricultural and Marine Products Market" },
       { name: "🍖 豬腳小姐", q: "Myth Jokbal Hongdae" }
     ]
   },
@@ -84,7 +84,7 @@ export const MAP_LOCATIONS: MapGroup[] = [
 ];
 
 export const FOOD_DATA: FoodItem[] = [
-  { name: "麻浦帝王蟹", desc: "新鮮海產，現場挑選蒸煮，無牛羊隱憂。", tag: "海鮮" },
+  { name: "麻浦帝王蟹 (3112攤位)", desc: "位於麻浦農水產物市場 3112 號，新鮮海產現場挑選蒸煮，無牛羊隱憂。", tag: "海鮮" },
   { name: "豬腳小姐", desc: "弘大名店，蒜味豬腳肥而不膩，搭配冷麵超讚。", tag: "豬肉" },
   { name: "天雞一隻雞", desc: "清淡鮮美雞湯，適合小孩拌飯吃。", tag: "雞肉" },
   { name: "厚切炸豬排", desc: "聖水洞名物，外酥內嫩，高品質豬肉料理。", tag: "豬肉" }
@@ -94,26 +94,81 @@ export const SHOPPING_DATA: ShoppingItem[] = [
   { 
     name: "Acnon 痘痘藥膏", 
     loc: "各大藥局", 
-    desc: "針對紅腫大痘非常有效（紅管）。",
+    desc: "針對紅腫大痘非常有效（紅管）。韓國國民級抗痘產品。",
     image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654101ko.jpg?l=zh"
   },
   { 
     name: "Noscarna 去疤膏", 
     loc: "各大藥局", 
-    desc: "韓國國民級去疤產品。",
+    desc: "韓國國民級去疤產品，針對新生疤痕效果顯著。",
     image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0013/A00000013545401ko.jpg?l=zh"
+  },
+  { 
+    name: "Aclean 水楊酸凝膠", 
+    loc: "各大藥局", 
+    desc: "針對閉口粉刺與黑頭，含水楊酸成分，溫和代謝。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654201ko.jpg?l=zh"
+  },
+  { 
+    name: "MelaToning Cream", 
+    loc: "各大藥局", 
+    desc: "淡斑神器，針對黑色素沉澱、雀斑有良好改善效果。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654301ko.jpg?l=zh"
+  },
+  { 
+    name: "Handok 痘痘水 (Clearteen)", 
+    loc: "各大藥局", 
+    desc: "液態設計，方便大面積塗抹於背部 or 臉部粉刺區。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654401ko.jpg?l=zh"
+  },
+  { 
+    name: "Dongkook Elina C 維他命 C", 
+    loc: "各大藥局 / Olive Young", 
+    desc: "高濃度維他命C粉，BLACKPINK 同款，口感好吸收快。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654501ko.jpg?l=zh"
+  },
+  { 
+    name: "jw 葡萄糖眼藥水", 
+    loc: "各大藥局", 
+    desc: "緩解眼睛疲勞，提供營養，適合長時間用眼者。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654601ko.jpg?l=zh"
+  },
+  { 
+    name: "YouGreen F 腳後跟護理膏", 
+    loc: "各大藥局", 
+    desc: "針對腳跟龜裂、粗糙有神效，滋潤度極高。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654701ko.jpg?l=zh"
   },
   { 
     name: "MARSHIQUE 頸紋貼", 
     loc: "Olive Young", 
-    desc: "近期爆紅的局部抗皺貼。",
+    desc: "近期爆紅的局部抗皺貼，睡前貼於頸部。",
     image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0018/A00000018154101ko.jpg?l=zh"
   },
   { 
-    name: "企鵝痠痛乳液", 
+    name: "企鵝痠痛乳液 (Antiphlamine)", 
     loc: "各大藥局", 
-    desc: "孫興慜代言，滾珠頭設計不沾手。",
+    desc: "孫興慜代言，滾珠頭設計不沾手，緩解肌肉痠痛。",
     image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014154101ko.jpg?l=zh"
+  },
+  { 
+    name: "Bentpla 舒緩凝膠", 
+    loc: "各大藥局", 
+    desc: "針對瘀青、腫脹有快速舒緩效果，旅行必備。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654801ko.jpg?l=zh"
+  },
+  { 
+    name: "CellMed 修護霜", 
+    loc: "各大藥局", 
+    desc: "強效修護受損肌膚，醫美術後亦可使用。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654901ko.jpg?l=zh"
+  },
+  {
+    name: "SPAO 弘大店 (童裝/服飾)",
+    loc: "弘大入口站 9號出口",
+    desc: "韓國必買平價服飾，記得出示優惠券或使用 Tax Refund。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014655001ko.jpg?l=zh",
+    code: "SPAO-SEOUL-2024"
   }
 ];
 

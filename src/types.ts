@@ -31,4 +31,5 @@ export interface ShoppingItem {
   loc: string;
   desc: string;
   image: string;
+  code?: string;
 }
