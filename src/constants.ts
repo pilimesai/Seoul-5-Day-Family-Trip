@@ -165,9 +165,11 @@ export const SHOPPING_DATA: ShoppingItem[] = [
   },
   {
     name: "SPAO 弘大店 (童裝/服飾)",
+    nameKr: "스파오 홍대점",
     loc: "弘大入口站 9號出口",
-    desc: "韓國必買平價服飾，記得出示優惠券或使用 Tax Refund。",
-    code: "SPAO-SEOUL-2024"
+    desc: "韓國必買平價服飾。出示 Klook 九折優惠券（憑證號：KLK8176732787，訂單號：WFY135546）。",
+    code: "KLK8176732787",
+    image: "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=KLK8176732787"
   }
 ];
 

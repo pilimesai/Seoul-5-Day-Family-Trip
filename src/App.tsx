@@ -268,6 +268,19 @@ export default function App() {
                         </div>
                         <p className="text-xs text-rose-600 font-bold mb-2">{item.loc}</p>
                         <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+                        {item.image && (
+                          <div className={clsx(
+                            "mt-3 rounded-lg overflow-hidden border border-stone-200",
+                            item.code ? "max-w-[200px] mx-auto" : "w-full"
+                          )}>
+                            <img 
+                              src={item.image} 
+                              alt={item.name} 
+                              className="w-full h-auto"
+                              referrerPolicy="no-referrer"
+                            />
+                          </div>
+                        )}
                         {item.code && (
                           <div className="mt-3 p-2 bg-amber-50 border border-dashed border-amber-300 rounded flex items-center justify-between">
                             <span className="text-[10px] font-bold text-amber-700 uppercase">Promo Code</span>
