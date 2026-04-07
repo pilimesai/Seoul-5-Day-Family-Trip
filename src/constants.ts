@@ -6,7 +6,7 @@ export const ITINERARY_DATA: DayData[] = [
     title: "豪華帝王蟹與弘大探索",
     highlights: "AREX、帝王蟹、人生四格",
     sections: [
-      { time: "11:00", text: "抵達仁川機場，搭乘 <strong>AREX 普通車</strong> 往弘大入口站。" },
+      { time: "11:00", text: "抵達仁川機場，搭乘<strong>AREX 普通車</strong> 往弘大入口站。" },
       { time: "15:00", text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹（非牛羊海鮮大餐）。" },
       { time: "18:00", text: "弘大商圈逛街：SPAO (買童裝)、Olive Young (補藥妝)、全家拍「人生四格」照片。" }
     ]
