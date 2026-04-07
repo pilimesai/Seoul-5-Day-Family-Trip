@@ -1,321 +1,180 @@
-import { DayItinerary, EssentialInfo, Restaurant, ShoppingItem, TransportInfo } from './types';
+import { DayData, MapGroup, FoodItem, ShoppingItem } from './types';
 
-export const ITINERARY: DayItinerary[] = [
+export const ITINERARY_DATA: DayData[] = [
   {
     day: 1,
-    title: "抵達首爾與明洞漫步",
-    activities: [
-      {
-        time: "15:00",
-        name: "抵達飯店 Check-in",
-        location: "明洞 (Myeongdong)",
-        description: "抵達仁川機場後，搭乘機場巴士或機場快線 A'REX 前往明洞地區飯店辦理入住，放下行李稍作休息。",
-        tips: ["推薦入住 L7 明洞或索拉利亞西鐵飯店，對親子旅客非常友善。"]
-      },
-      {
-        time: "17:00",
-        name: "明洞商圈探索",
-        location: "明洞樂天百貨",
-        description: "逛逛明洞大街，體驗熱鬧的氛圍。明洞有許多藥妝店如 Olive Young 與卡通聯名店。",
-        tips: ["孩子會喜歡 LINE FRIENDS 店與明洞大創。"]
-      },
-      {
-        time: "19:00",
-        name: "明洞美食：明洞餃子",
-        location: "明洞餃子",
-        description: "品嚐米其林推薦的明洞餃子與刀切麵。",
-        tips: ["麵條軟Q、湯頭濃郁，非常適合小孩吃。"]
-      }
+    title: "豪華帝王蟹與弘大探索",
+    highlights: "AREX、帝王蟹、人生四格",
+    sections: [
+      { time: "11:00", text: "抵達仁川機場，搭乘 <strong>AREX 普通車</strong> 往弘大入口站。" },
+      { time: "15:00", text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹（非牛羊海鮮大餐）。" },
+      { time: "18:00", text: "弘大商圈逛街：SPAO (買童裝)、Olive Young (補藥妝)、全家拍「人生四格」照片。" }
     ]
   },
   {
     day: 2,
-    title: "聖水洞潮流與童裝巡禮",
-    activities: [
-      {
-        time: "10:00",
-        name: "聖水洞巡禮",
-        location: "聖水洞 (Seongsu-dong)",
-        description: "首爾最紅的文青區，有許多廢棄倉庫改建的咖啡廳與潮牌店。參觀 Dior 旗艦店。",
-        tips: ["聖水洞有許多適合拍照的街景。", "聖水洞也有不少特色童裝選物店。"]
-      },
-      {
-        time: "13:00",
-        name: "馬場洞韓牛盛宴 (海鮮龍蝦專屬)",
-        location: "馬場洞畜產物市場",
-        description: "在馬場洞品嚐現烤的韓牛，這是首爾最頂級的牛肉享受。",
-        tips: ["推薦店家：馬場骨。"]
-      },
-      {
-        time: "15:30",
-        name: "首爾大公園",
-        location: "首爾大公園 (Seoul Grand Park)",
-        description: "佔地廣大的首爾大公園，有動物園、植物園與主題樂園。搭乘大象列車和小纜車。",
-        tips: ["小纜車風景絕佳，非常輕鬆。"]
-      }
+    title: "仁川一日團 (週五)",
+    highlights: "極光秀、斜坡滑車、蒜味豬腳",
+    sections: [
+      { time: "08:30", text: "弘大站集合。仁川一日遊啟程。" },
+      { time: "上午", text: "INSPIRE Resort 極光秀 & 斜坡滑車 (Luge) 小孩超愛！" },
+      { time: "下午", text: "永宗島鐵道自行車 (Rail Bike)，看海放鬆。" },
+      { time: "19:00", text: "晚餐：<strong>弘大豬腳小姐 (Myth Jokbal)</strong>，蒜味豬腳（純豬肉，避開牛羊）。" }
     ]
   },
   {
     day: 3,
-    title: "文化體驗與樂天世界",
-    activities: [
-      {
-        time: "09:30",
-        name: "景福宮韓服體驗",
-        location: "景福宮 (Gyeongbokgung Palace)",
-        description: "全家人一起換上美美的韓服，走進古老的宮殿群拍攝家庭紀念照。",
-        tips: ["有很多兒童韓服款式。"]
-      },
-      {
-        time: "13:00",
-        name: "通仁市場 便當體驗",
-        location: "通仁市場 (Tongin Market)",
-        description: "用古銅錢購買美食裝進便當盒。這是首爾非常獨特的體驗。",
-        tips: ["可以讓孩子自己拿銅錢去選想吃的東西。"]
-      },
-      {
-        time: "15:00",
-        name: "樂天世界與超市購物",
-        location: "樂天世界 (Lotte World)",
-        description: "這裡是全世界最大的室內遊樂園，即使下雨也不影響遊玩。",
-        tips: ["室內區域有很多適合幼兒的慢速設施。"]
-      }
+    title: "購物與手作 (週六)",
+    highlights: "醫美、DIY、超市大掃貨",
+    sections: [
+      { time: "10:00", text: "【分頭行動】👩 媽媽前往 Forena Clinic 醫美；👨 爸爸帶小孩去 Object 進行布章手作 DIY。" },
+      { time: "12:30", text: "午餐：多樂套雞湯飯（濃郁雞骨湯，小孩友善）。" },
+      { time: "14:30", text: "昌信洞文具玩具批發市場：五歲男童的放電天堂。" },
+      { time: "16:30", text: "晚餐：<strong>天雞一隻雞 (新堂站)</strong>。提早吃免排隊。" },
+      { time: "19:00", text: "首爾站 Lotte Outlets (買 TNF 外套) ＆ 樂天超市買伴手禮。" }
     ]
   },
   {
     day: 4,
-    title: "南大門採買與豬蹄晚餐",
-    activities: [
-      {
-        time: "10:00",
-        name: "南大門童裝街",
-        location: "南大門市場 (Namdaemun Market)",
-        description: "全韓國最大的童裝批發地。不管是潮流款還是韓式文青款，都可以在這裡用最划算的價格買到。",
-        tips: ["建議多留一點預算與行李空間。"]
-      },
-      {
-        time: "13:00",
-        name: "廣藏市場 傳統美食",
-        location: "廣藏市場 (Gwangjang Market)",
-        description: "體驗韓國傳統市場氛圍，品嚐有名的綠豆餅與生牛肉。",
-        tips: ["攤位 13 號非常有特色。"]
-      },
-      {
-        time: "18:00",
-        name: "夢幻豬蹄全餐",
-        location: "滿足五香豬蹄",
-        description: "肉質 Q 彈厚實，膠原蛋白滿滿。",
-        tips: ["明洞店離商圈很近，交通超方便。"]
-      }
+    title: "自然放電與聖水洞 (週日)",
+    highlights: "首爾大公園、Dior、炸豬排",
+    sections: [
+      { time: "09:30", text: "早餐：Egg Drop 爆餡吐司。" },
+      { time: "11:00", text: "<strong>首爾大公園</strong>：搭大象列車看動物。戶外放電時間。" },
+      { time: "15:00", text: "聖水洞探索：媽媽逛 Dior 概念店與 Musinsa Standard；爸爸與小孩在 Cafe Onion 享用麵包。" },
+      { time: "18:00", text: "晚餐：聖水洞厚切炸豬排（小孩最愛）。" }
     ]
   },
   {
     day: 5,
-    title: "漫步北村與準備歸賦",
-    activities: [
-      {
-        time: "10:00",
-        name: "北村韓屋村",
-        location: "北村韓屋村 (Bukchon Hanok Village)",
-        description: "漫步在保留完好的傳統韓屋建築群中。",
-        tips: ["住宅區請保持安靜。"]
-      },
-      {
-        time: "13:00",
-        name: "林蔭道 Cafe Time",
-        location: "新沙洞林蔭道 (Garosu-gil)",
-        description: "在時髦的咖啡廳享受午後光陰。",
-        tips: ["Gentle Monster 旗艦店非常酷。"]
-      },
-      {
-        time: "16:00",
-        name: "前往機場",
-        location: "仁川機場 (ICN)",
-        description: "準備登機，返回溫暖的家。",
-        tips: ["仁川機場有很多親子設施。"]
-      }
+    title: "網美早午餐與賦歸",
+    highlights: "溫室早午餐、整理戰利品",
+    sections: [
+      { time: "10:00", text: "退房寄放行李。步行前往「Urban Plant」合井站植物系早午餐。" },
+      { time: "12:00", text: "弘大最後補貨（ABC Mart 買鞋或襪子）。" },
+      { time: "13:30", text: "搭乘 AREX 普通車前往機場。16:00 班機起飛。" }
     ]
   }
 ];
 
-export const ESSENTIAL_INFO: EssentialInfo[] = [
+export const MAP_LOCATIONS: MapGroup[] = [
   {
-    title: "簽證與護照",
-    content: "持有台灣、香港或馬來西亞護照通常可免簽。出發前需確認。"
+    day: "Day 1-2 弘大與周邊",
+    locations: [
+      { name: "🦀 麻浦農水產市場 (3112攤位)", q: "Mapo Agricultural and Marine Products Market" },
+      { name: "🍖 豬腳小姐", q: "Myth Jokbal Hongdae" }
+    ]
   },
   {
-    title: "氣候與衣著",
-    content: "春秋季（4-5月, 10-11月）最適合。夏季炎熱多雨，冬季嚴寒。"
+    day: "Day 3 首爾站與新堂",
+    locations: [
+      { name: "🧸 文具批發市場", q: "Changsin-dong Toy Market" },
+      { name: "🍲 天雞一隻雞", q: "Tien-Ji Chicken Shindang" },
+      { name: "🛒 樂天超市首爾站", q: "Lotte Mart Seoul Station" }
+    ]
   },
   {
-    title: "換匯與支付",
-    content: "推薦使用 WOWPASS 卡，集換匯、支付、交通卡 T-money 於一身。"
-  },
-  {
-    title: "退稅優惠",
-    content: "滿 30,000 韓元即可憑護照享有現場退稅或機場退稅。"
+    day: "Day 4-5 聖水與合井",
+    locations: [
+      { name: "🐘 首爾大公園", q: "Seoul Grand Park" },
+      { name: "☕ Cafe Onion 聖水", q: "Cafe Onion Seongsu" },
+      { name: "🌿 Urban Plant 合井", q: "Urban Plant Hapjeong" }
+    ]
   }
 ];
 
-export const RESTAURANTS: Restaurant[] = [
-  {
-    name: "明洞餃子",
-    category: "韓式刀切麵",
-    rating: 4.8,
-    location: "明洞",
-    imageUrl: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800",
-    recommendation: "米其林推薦。肉燥刀切麵湯頭濃郁，餃子皮薄餡多。",
+export const FOOD_DATA: FoodItem[] = [
+  { name: "麻浦帝王蟹 (3112攤位)", desc: "位於麻浦農水產物市場 3112 號，新鮮海產現場挑選蒸煮，無牛羊隱憂。", tag: "海鮮" },
+  { name: "豬腳小姐", desc: "弘大名店，蒜味豬腳肥而不膩，搭配冷麵超讚。", tag: "豬肉" },
+  { name: "天雞一隻雞", desc: "清淡鮮美雞湯，適合小孩拌飯吃。", tag: "雞肉" },
+  { name: "厚切炸豬排", desc: "聖水洞名物，外酥內嫩，高品質豬肉料理。", tag: "豬肉" }
+];
+
+export const SHOPPING_DATA: ShoppingItem[] = [
+  { 
+    name: "Acnon 痘痘藥膏", 
+    loc: "各大藥局", 
+    desc: "針對紅腫大痘非常有效（紅管）。韓國國民級抗痘產品。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654101ko.jpg?l=zh"
+  },
+  { 
+    name: "Noscarna 去疤膏", 
+    loc: "各大藥局", 
+    desc: "韓國國民級去疤產品，針對新生疤痕效果顯著。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0013/A00000013545401ko.jpg?l=zh"
+  },
+  { 
+    name: "Aclean 水楊酸凝膠", 
+    loc: "各大藥局", 
+    desc: "針對閉口粉刺與黑頭，含水楊酸成分，溫和代謝。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654201ko.jpg?l=zh"
+  },
+  { 
+    name: "MelaToning Cream", 
+    loc: "各大藥局", 
+    desc: "淡斑神器，針對黑色素沉澱、雀斑有良好改善效果。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654301ko.jpg?l=zh"
+  },
+  { 
+    name: "Handok 痘痘水 (Clearteen)", 
+    loc: "各大藥局", 
+    desc: "液態設計，方便大面積塗抹於背部 or 臉部粉刺區。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654401ko.jpg?l=zh"
+  },
+  { 
+    name: "Dongkook Elina C 維他命 C", 
+    loc: "各大藥局 / Olive Young", 
+    desc: "高濃度維他命C粉，BLACKPINK 同款，口感好吸收快。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654501ko.jpg?l=zh"
+  },
+  { 
+    name: "jw 葡萄糖眼藥水", 
+    loc: "各大藥局", 
+    desc: "緩解眼睛疲勞，提供營養，適合長時間用眼者。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654601ko.jpg?l=zh"
+  },
+  { 
+    name: "YouGreen F 腳後跟護理膏", 
+    loc: "各大藥局", 
+    desc: "針對腳跟龜裂、粗糙有神效，滋潤度極高。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654701ko.jpg?l=zh"
+  },
+  { 
+    name: "MARSHIQUE 頸紋貼", 
+    loc: "Olive Young", 
+    desc: "近期爆紅的局部抗皺貼，睡前貼於頸部。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0018/A00000018154101ko.jpg?l=zh"
+  },
+  { 
+    name: "企鵝痠痛乳液 (Antiphlamine)", 
+    loc: "各大藥局", 
+    desc: "孫興慜代言，滾珠頭設計不沾手，緩解肌肉痠痛。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014154101ko.jpg?l=zh"
+  },
+  { 
+    name: "Bentpla 舒緩凝膠", 
+    loc: "各大藥局", 
+    desc: "針對瘀青、腫脹有快速舒緩效果，旅行必備。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654801ko.jpg?l=zh"
+  },
+  { 
+    name: "CellMed 修護霜", 
+    loc: "各大藥局", 
+    desc: "強效修護受損肌膚，醫美術後亦可使用。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014654901ko.jpg?l=zh"
   },
   {
-    name: "滿足五香豬蹄",
-    category: "豬蹄與生菜包肉",
-    rating: 4.7,
-    location: "明洞/市廳",
-    imageUrl: "https://images.unsplash.com/photo-1594179047519-f347310d3322?auto=format&fit=crop&q=80&w=800",
-    recommendation: "首爾三大豬蹄之一。肉質非常軟滑，帶一點甜味。",
+    name: "SPAO 弘大店 (童裝/服飾)",
+    loc: "弘大入口站 9號出口",
+    desc: "韓國必買平價服飾，記得出示優惠券或使用 Tax Refund。",
+    image: "https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014655001ko.jpg?l=zh",
+    code: "SPAO-SEOUL-2024"
   }
 ];
 
-export const SHOPPING_LIST: ShoppingItem[] = [
-  {
-    name: "Acnon 痘痘藥膏 (Acnon Cream)",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "針對發炎、紅腫痘痘非常有效，能快速消腫。",
-    imageUrl: "https://shop.r10s.jp/fujiyapharmacy/cabinet/imgrc0234479523.jpg",
-    usage: "潔面後塗抹於患處。"
-  },
-  {
-    name: "Aclean 水楊酸凝膠 (Aclean Gel)",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "針對黑頭、白頭粉刺有很好的代謝效果。",
-    imageUrl: "https://thumbnail.image.rakuten.co.jp/@0_mall/cosme-vivi/cabinet/korea/714001.jpg",
-    usage: "建議於夜間保養使用。"
-  },
-  {
-    name: "CellMed 修護霜 (CellMed Repair Cream)",
-    location: "醫美診所/指定藥局",
-    category: "必買藥妝",
-    description: "醫美級修護產品，特別適合術後敏感肌。",
-    imageUrl: "https://m.media-amazon.com/images/I/61x9u5j4TLL._SL1500_.jpg",
-    usage: "早晚均可使用。"
-  },
-  {
-    name: "Cellromax Vitamin K Cream",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "改善暗沉與退紅，常作為術後保養。",
-    imageUrl: "https://m.media-amazon.com/images/I/61MvS5hLq8L._SL1000_.jpg",
-    usage: "重點塗抹泛紅處。"
-  },
-  {
-    name: "Noscarna 去疤膏 (Noscarna Gel)",
-    location: "各大藥局",
-    category: "必買藥妝",
-    description: "韓國「國民去疤膏」，針對痘疤、蚊蟲叮咬非常有效。",
-    imageUrl: "https://shop.r10s.jp/vivid-vivid/cabinet/compass1659586111.jpg",
-    usage: "傷口結痂後每日塗抹 2-3 次。"
-  },
-  {
-    name: "MelaToning Cream",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "淡化因紫外線引起的色素沉澱與黑斑。",
-    imageUrl: "https://i.ebayimg.com/images/g/7pYAAOSwm~hk0G0v/s-l1600.jpg",
-    usage: "早晚使用，注意防曬。"
-  },
-  {
-    name: "Rejuvenex PDRN 精華安瓶",
-    location: "指定藥局",
-    category: "必買藥妝",
-    description: "含 PDRN 強效修護成分，深層補水。",
-    imageUrl: "https://i.ebayimg.com/images/g/sXMAAOSwf5lk~6K7/s-l1600.jpg",
-    usage: "潔面後第一步。"
-  },
-  {
-    name: "Rejuall 修護霜 (Rejuall Repair Cream)",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "高價值 PDRN 修護霜，用於術後保濕。",
-    imageUrl: "https://m.media-amazon.com/images/I/51pWf2C-u0L._SL1000_.jpg",
-    usage: "早晚使用。"
-  },
-  {
-    name: "jw 葡萄糖眼藥水",
-    location: "各大藥局",
-    category: "必買藥妝",
-    description: "針對眼睛疲勞有奇效，金智媛代言。",
-    imageUrl: "https://m.media-amazon.com/images/I/41Kq7qZ6W+L.jpg",
-    usage: "眼睛疲勞時滴用。"
-  },
-  {
-    name: "Handok 痘痘水 (Handok Acne Water)",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "液體配方，含有 2% 水楊酸，針對黑頭、白頭粉刺有奇效。",
-    imageUrl: "https://www.handok.co.kr/_File/Product/20130625105221_5088.jpg",
-    usage: "局部點塗於粉刺處。"
-  },
-  {
-    name: "Sinil Pharm 舒緩貼布",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "熱銷痠痛貼布，分冷/熱兩款。",
-    imageUrl: "https://m.media-amazon.com/images/I/81xU9pY+G5L._SL1500_.jpg",
-    usage: "貼在關節或痠痛處。"
-  },
-  {
-    name: "YouGreen F 腳後跟護理膏",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "含 25% 尿素，超強效軟化角質，解決腳跟乾裂問題。",
-    imageUrl: "https://www.mirpharma.co.kr/data/item/1603957297/thumb-67C867C467C467C4_600x600.png",
-    usage: "睡前厚塗，可搭配襪子使用。"
-  },
-  {
-    name: "Dongkook Elina C 維他命 C",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "Rosé 推薦。高劑量 2000mg 維他命 C。",
-    imageUrl: "https://m.media-amazon.com/images/I/51X57o7Y4kL._SL1000_.jpg",
-    usage: "每日一包。"
-  },
-  {
-    name: "SEVITAB 痘痘藥 (Sebitap)",
-    location: "各大韓國藥局 (Pharmacy)",
-    category: "必買藥妝",
-    description: "針對發炎性痘痘有很好的鎮靜效果，含有維生素 B3 成分。",
-    imageUrl: "https://img.khan.co.kr/news/2024/05/27/l_2024052701000300800025911.jpg",
-    usage: "潔面後塗抹於紅腫處。"
-  },
-  {
-    name: "Bentpla 舒緩凝膠 (Jennie 代言)",
-    location: "Jennie 推薦 / 各大藥局",
-    category: "必買藥妝",
-    description: "針對瘀青、大面積腫脹效果顯著。Jennie 曾在 VLOG 中推薦。",
-    imageUrl: "http://www.taiguk.co.kr/_File/Product/20140224163901_3879.jpg",
-    usage: "於淤青處輕輕按摩。"
-  },
-  {
-    name: "Antiphlamine 滾珠乳液",
-    location: "各大藥局",
-    category: "必買藥妝",
-    description: "傳統痠痛藥水結合滾珠設計，不沾手也能塗抹。",
-    imageUrl: "https://m.media-amazon.com/images/I/61jC+k+H6gL._SL1000_.jpg",
-    usage: "滾動塗抹。"
-  }
-];
-
-export const TRANSPORT_INFO: TransportInfo[] = [
-  {
-    name: "WOWPASS 旅遊神卡",
-    description: "集換匯、支付、交通卡 T-money 於一身。",
-    type: "transport"
-  },
-  {
-    name: "Kakao Maps",
-    description: "韓國導航必備。",
-    type: "net"
-  }
+export const ANALYTICS_DATA = [
+  { name: '購物補貨', value: 35, color: '#fb7185' },
+  { name: '小孩放電', value: 30, color: '#fbbf24' },
+  { name: '美食探索', value: 20, color: '#2dd4bf' },
+  { name: '醫美手作', value: 15, color: '#818cf8' },
 ];
