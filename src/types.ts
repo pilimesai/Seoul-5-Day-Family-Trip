@@ -28,8 +28,8 @@ export interface FoodItem {
 
 export interface ShoppingItem {
   name: string;
+  nameKr?: string;
   loc: string;
   desc: string;
-  image: string;
   code?: string;
 }
