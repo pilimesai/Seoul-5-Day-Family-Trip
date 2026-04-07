@@ -1,367 +1,310 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { 
+  Calendar, 
   MapPin, 
   Utensils, 
   ShoppingBag, 
-  Calendar, 
-  PieChart, 
-  Baby, 
-  Users, 
-  User, 
-  Ban, 
-  Lightbulb, 
-  TrainFront, 
-  Pill,
-  ChevronRight
+  Info, 
+  Clock, 
+  Navigation, 
+  CheckCircle2, 
+  Bus, 
+  Train, 
+  Heart, 
+  Baby,
+  ExternalLink,
+  Pill
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { PieChart as RePieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-import { ITINERARY_DATA, MAP_LOCATIONS, FOOD_DATA, SHOPPING_DATA, ANALYTICS_DATA } from './constants';
+import { useState } from 'react';
+import { 
+  ITINERARY, 
+  ESSENTIAL_INFO, 
+  RESTAURANTS, 
+  SHOPPING_LIST,
+  TRANSPORT_INFO
+} from './constants';
 
-/**
- * Utility for merging tailwind classes
- */
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-type TabType = 'itinerary' | 'map' | 'food' | 'shopping' | 'analytics';
-
-export default function App() {
-  const [activeTab, setActiveTab] = useState<TabType>('itinerary');
+function App() {
+  const [activeTab, setActiveTab] = useState<'itinerary' | 'info' | 'food' | 'shopping'>('itinerary');
   const [activeDay, setActiveDay] = useState(1);
-  const [activeMapQuery, setActiveMapQuery] = useState('Hongik University Station');
 
-  const currentDayData = useMemo(() => 
-    ITINERARY_DATA.find(d => d.day === activeDay) || ITINERARY_DATA[0]
-  , [activeDay]);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  };
 
   return (
-    <div className="bg-stone-50 text-stone-800 antialiased min-h-screen flex flex-col">
+    <div className="min-h-screen bg-slate-50 font-sans text-stone-900 pb-20">
       {/* Header */}
-      <header className="bg-white shadow-sm pt-8 pb-6 px-4 border-b-4 border-teal-600">
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-extrabold text-stone-900 mb-4 tracking-tight"
-          >
-            🇰🇷 首爾五天四夜親子遊
-          </motion.h1>
-          <p className="text-lg md:text-xl text-stone-600 mb-6 font-medium">
-            弘大完美基地 ‧ 豪華帝王蟹 ‧ 購物放電黃金比例
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3 text-sm">
-            <Badge icon={<Baby className="w-4 h-4" />} color="amber">1童 (五歲男)</Badge>
-            <Badge icon={<Users className="w-4 h-4" />} color="rose">2女 (主力購物)</Badge>
-            <Badge icon={<User className="w-4 h-4" />} color="blue">1男 (神隊友)</Badge>
-            <Badge icon={<Ban className="w-4 h-4" />} color="red">嚴禁牛羊</Badge>
+      <header className="bg-white border-b border-stone-200 py-6 px-4 sticky top-0 z-50 shadow-sm">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-teal-100">
+              <Baby className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-black tracking-tight text-stone-900">首爾親子遊</h1>
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400">Family Itinerary Guide</p>
+            </div>
+          </div>
+          <div className="bg-stone-50 px-3 py-1.5 rounded-full border border-stone-100 flex items-center gap-2">
+            <Calendar className="w-3.5 h-3.5 text-teal-600" />
+            <span className="text-xs font-bold text-stone-600">5 Days Tour</span>
           </div>
         </div>
       </header>
 
-      {/* Navigation */}
-      <nav className="bg-white sticky top-0 z-10 shadow-md">
-        <div className="max-w-5xl mx-auto px-4 flex justify-around overflow-x-auto hide-scrollbar">
-          <TabButton 
-            active={activeTab === 'itinerary'} 
-            onClick={() => setActiveTab('itinerary')}
-            icon={<Calendar className="w-4 h-4" />}
-          >
-            行程總覽
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'map'} 
-            onClick={() => setActiveTab('map')}
-            icon={<MapPin className="w-4 h-4" />}
-          >
-            地圖導覽
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'food'} 
-            onClick={() => setActiveTab('food')}
-            icon={<Utensils className="w-4 h-4" />}
-          >
-            美食清單
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'shopping'} 
-            onClick={() => setActiveTab('shopping')}
-            icon={<ShoppingBag className="w-4 h-4" />}
-          >
-            必買藥妝
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'analytics'} 
-            onClick={() => setActiveTab('analytics')}
-            icon={<PieChart className="w-4 h-4" />}
-          >
-            行程分析
-          </TabButton>
+      <main className="max-w-4xl mx-auto">
+        {/* Navigation Tabs */}
+        <div className="flex overflow-x-auto no-scrollbar border-b border-stone-200 sticky top-[81px] bg-white z-40 px-4">
+          {[
+            { id: 'itinerary', label: '行程規劃', icon: Calendar },
+            { id: 'info', label: '行前資訊', icon: Info },
+            { id: 'food', label: '美食地圖', icon: Utensils },
+            { id: 'shopping', label: '必買藥妝', icon: ShoppingBag },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`flex items-center gap-2 whitespace-nowrap py-4 px-4 text-sm transition-all border-b-4 ${
+                activeTab === tab.id 
+                  ? 'border-teal-600 text-teal-600 font-bold' 
+                  : 'border-transparent text-stone-400 hover:text-teal-500'
+              }`}
+            >
+              <tab.icon className="w-4 h-4" />
+              <span>{tab.label}</span>
+            </button>
+          ))}
         </div>
-      </nav>
 
-      {/* Main Content */}
-      <main className="flex-grow max-w-5xl mx-auto w-full p-4 md:p-6 lg:p-8">
-        <AnimatePresence mode="wait">
+        <div className="p-4 md:p-6">
+          {/* Tab Content: Itinerary */}
           {activeTab === 'itinerary' && (
-            <motion.section 
-              key="itinerary"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="space-y-6"
-            >
-              <div className="bg-amber-50 border border-amber-200 p-5 rounded-xl shadow-sm">
-                <h3 className="font-bold text-amber-800 text-lg mb-3 flex items-center">
-                  <Lightbulb className="w-5 h-5 text-amber-500 mr-2" />
-                  行前必看秘笈
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start text-stone-700 text-sm">
-                    <TrainFront className="w-4 h-4 text-blue-500 mt-1 mr-2 shrink-0" />
-                    <div>
-                      <strong className="text-blue-600 block mb-0.5">交通大雷區：AREX 機場快線</strong>
-                      前往弘大請務必搭乘藍色的 <strong>普通車 (All-stop)</strong>！千萬別買直達車，會過站不停。
-                    </div>
-                  </li>
-                  <li className="flex items-start text-stone-700 text-sm">
-                    <Ban className="w-4 h-4 text-red-500 mt-1 mr-2 shrink-0" />
-                    <div>
-                      <strong className="text-stone-800">飲食把關：無牛羊原則</strong>
-                      推薦餐廳皆以豬、雞、海鮮為主，點餐時可向店員出示「🚫 소고기 양고기 안먹어요 (我不吃牛羊)」字卡。
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/4 flex md:flex-col overflow-x-auto gap-2 hide-scrollbar">
-                  {ITINERARY_DATA.map((day) => (
-                    <button
-                      key={day.day}
-                      onClick={() => setActiveDay(day.day)}
-                      className={cn(
-                        "w-full text-left md:text-center px-4 py-3 rounded-lg border font-bold transition whitespace-nowrap md:whitespace-normal",
-                        activeDay === day.day 
-                          ? "bg-teal-600 text-white border-teal-600 shadow-md" 
-                          : "bg-white text-stone-600 border-stone-200 hover:border-teal-300"
-                      )}
-                    >
-                      Day {day.day}
-                    </button>
-                  ))}
-                </div>
-                <div className="md:w-3/4 bg-white rounded-xl shadow-sm border border-stone-200 p-5 md:p-6 min-h-[400px]">
-                  <h2 className="text-2xl font-extrabold mb-4 text-stone-900 border-b pb-2 flex items-center justify-between">
-                    <span>Day {currentDayData.day}: {currentDayData.title}</span>
-                    <span className="text-xs font-normal text-stone-400 hidden sm:inline">{currentDayData.highlights}</span>
-                  </h2>
-                  <div className="space-y-6">
-                    {currentDayData.sections.map((sec, idx) => (
-                      <div key={idx} className="flex flex-col md:flex-row gap-2 group">
-                        <div className="md:w-20 font-bold text-teal-600 shrink-0 flex items-center md:items-start">
-                          <span className="bg-teal-50 px-2 py-1 rounded md:bg-transparent md:p-0">{sec.time}</span>
-                          <ChevronRight className="w-4 h-4 ml-1 md:hidden text-teal-300" />
-                        </div>
-                        <div 
-                          className="text-stone-700 leading-relaxed pl-2 md:pl-0 border-l-2 border-teal-100 md:border-0"
-                          dangerouslySetInnerHTML={{ __html: sec.text }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.section>
-          )}
-
-          {activeTab === 'map' && (
-            <motion.section 
-              key="map"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="flex flex-col md:flex-row gap-6 h-[600px]"
-            >
-              <div className="md:w-1/3 flex flex-col overflow-y-auto gap-2 pr-2 hide-scrollbar bg-white p-4 rounded-xl border border-stone-200">
-                {MAP_LOCATIONS.map((group, gIdx) => (
-                  <div key={gIdx}>
-                    <div className="font-bold mt-4 mb-2 text-stone-400 text-xs tracking-widest uppercase px-1">
-                      {group.day}
-                    </div>
-                    {group.locations.map((loc, lIdx) => (
-                      <button
-                        key={lIdx}
-                        onClick={() => setActiveMapQuery(loc.q)}
-                        className={cn(
-                          "w-full text-left px-3 py-3 border mb-2 rounded-lg transition shadow-sm text-sm",
-                          activeMapQuery === loc.q
-                            ? "bg-rose-50 text-rose-700 border-rose-200 font-bold"
-                            : "bg-stone-50 text-stone-600 border-stone-200 hover:bg-white"
-                        )}
-                      >
-                        {loc.name}
-                      </button>
-                    ))}
-                  </div>
+            <motion.div variants={containerVariants} initial="hidden" animate="visible">
+              <div className="flex gap-2 mb-8 overflow-x-auto no-scrollbar pb-2">
+                {[1, 2, 3, 4, 5].map((day) => (
+                  <button
+                    key={day}
+                    onClick={() => setActiveDay(day)}
+                    className={`flex-1 min-w-[70px] py-4 rounded-2xl flex flex-col items-center transition-all border ${
+                      activeDay === day 
+                        ? 'bg-teal-600 border-teal-600 text-white shadow-lg shadow-teal-100' 
+                        : 'bg-white border-stone-100 text-stone-400'
+                    }`}
+                  >
+                    <span className="text-[10px] uppercase font-bold tracking-widest mb-1">Day</span>
+                    <span className="text-xl font-black">{day}</span>
+                  </button>
                 ))}
               </div>
-              <div className="md:w-2/3 bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden relative min-h-[300px]">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  loading="lazy" 
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(activeMapQuery)}&output=embed`}
-                />
-              </div>
-            </motion.section>
-          )}
 
-          {activeTab === 'food' && (
-            <motion.section 
-              key="food"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            >
-              {FOOD_DATA.map((item, idx) => (
-                <div key={idx} className="bg-white p-5 border rounded-xl shadow-sm border-l-4 border-l-teal-500 hover:shadow-md transition">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-bold text-lg">{item.name}</h3>
-                    <span className="bg-teal-50 text-teal-700 text-xs px-2 py-1 rounded font-bold">{item.tag}</span>
-                  </div>
-                  <p className="text-stone-600 text-sm">{item.desc}</p>
+              <div className="space-y-6">
+                <div className="flex items-center gap-3 mb-2">
+                   <div className="w-1 h-6 bg-teal-600 rounded-full" />
+                   <h2 className="text-2xl font-black text-stone-900 leading-none">
+                     {ITINERARY.find(d => d.day === activeDay)?.title}
+                   </h2>
                 </div>
-              ))}
-            </motion.section>
-          )}
-
-          {activeTab === 'shopping' && (
-            <motion.section 
-              key="shopping"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            >
-              {SHOPPING_DATA.map((item, idx) => (
-                <div key={idx} className="bg-white border rounded-xl shadow-sm overflow-hidden hover:shadow-md transition flex flex-col">
-                  <div className="h-48 overflow-hidden relative group">
-                    <img 
-                      src={item.image} 
-                      alt={item.name} 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute top-3 left-3 bg-rose-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
-                      Must Buy
-                    </div>
-                  </div>
-                  <div className="p-5 flex gap-4 items-start">
-                    <div className="w-10 h-10 bg-rose-50 flex items-center justify-center rounded-full text-rose-500 shrink-0">
-                      <Pill className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-stone-800">{item.name}</h3>
-                      <p className="text-xs text-rose-600 font-bold mb-1">{item.loc}</p>
-                      <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
-                      {item.code && (
-                        <div className="mt-3 p-2 bg-amber-50 border border-dashed border-amber-300 rounded flex items-center justify-between">
-                          <span className="text-[10px] font-bold text-amber-700 uppercase">Promo Code</span>
-                          <span className="text-sm font-mono font-bold text-amber-900">{item.code}</span>
+                
+                {ITINERARY.find(d => d.day === activeDay)?.activities.map((activity, idx) => (
+                  <motion.div key={idx} variants={itemVariants} className="bg-white rounded-2xl border border-stone-100 p-5 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-teal-50 rounded-full -mr-12 -mt-12 opacity-50 group-hover:scale-110 transition-transform" />
+                    <div className="relative">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="bg-teal-50 text-teal-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5" />
+                          {activity.time}
+                        </div>
+                        {activity.location && (
+                          <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activity.location + ' Seoul')}`} target="_blank" rel="noopener noreferrer" className="text-stone-300 hover:text-teal-600 transition-colors">
+                            <Navigation className="w-5 h-5" />
+                          </a>
+                        )}
+                      </div>
+                      <h3 className="text-lg font-bold text-stone-900 mb-2">{activity.name}</h3>
+                      <p className="text-stone-500 text-sm leading-relaxed mb-4">{activity.description}</p>
+                      {activity.tips && activity.tips.length > 0 && (
+                        <div className="bg-amber-50 rounded-xl p-4 border border-amber-100">
+                          <div className="flex items-center gap-2 text-amber-800 mb-2 font-bold text-xs uppercase tracking-wider">
+                            <Heart className="w-3.5 h-3.5" />
+                            <span>Family Tip</span>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {activity.tips.map((tip, i) => (
+                              <li key={i} className="text-amber-700 text-xs flex items-start gap-2">
+                                <span className="mt-1 w-1 h-1 bg-amber-400 rounded-full shrink-0" />
+                                {tip}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                     </div>
-                  </div>
-                </div>
-              ))}
-            </motion.section>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           )}
 
-          {activeTab === 'analytics' && (
-            <motion.section 
-              key="analytics"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="bg-white rounded-xl shadow-sm border border-stone-200 p-6 flex flex-col items-center gap-8 text-center"
-            >
-              <h3 className="text-xl font-bold">行程權重分配</h3>
-              <div className="w-full h-[300px] md:h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RePieChart>
-                    <Pie
-                      data={ANALYTICS_DATA}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={60}
-                      outerRadius={100}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {ANALYTICS_DATA.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend verticalAlign="bottom" height={36}/>
-                  </RePieChart>
-                </ResponsiveContainer>
+          {/* Tab Content: Shopping (The Original UI Restoration) */}
+          {activeTab === 'shopping' && (
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {SHOPPING_LIST.map((item, index) => (
+                  <motion.div 
+                    key={index} 
+                    variants={itemVariants} 
+                    className="bg-white rounded-xl shadow-sm overflow-hidden border border-stone-200 hover:shadow-md transition-all relative group flex flex-col"
+                  >
+                    {/* MUST BUY Badge - Restored */}
+                    <div className="absolute top-3 left-3 z-10 bg-rose-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-sm uppercase tracking-wider shadow-sm">
+                      MUST BUY
+                    </div>
+
+                    {item.imageUrl && (
+                      <div className="h-48 overflow-hidden bg-stone-100">
+                        <img 
+                          src={item.imageUrl} 
+                          alt={item.name} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                        />
+                      </div>
+                    )}
+                    
+                    <div className="p-4 flex-1 flex flex-col">
+                      <div className="flex items-start gap-3 mb-3">
+                        {/* Pink Icon Circle - Restored */}
+                        <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center shrink-0">
+                          <Pill className="text-rose-500 w-5 h-5" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-stone-900 text-base leading-tight mb-0.5 truncate">{item.name}</h3>
+                          <div className="text-rose-600 text-xs font-medium flex items-center gap-1">
+                            <MapPin className="w-3 h-3" />
+                            {item.location}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <p className="text-stone-600 text-sm leading-relaxed mb-4 line-clamp-3">{item.description}</p>
+                      
+                      {item.usage && (
+                        <div className="mt-auto pt-3 border-t border-stone-50 flex items-start gap-2">
+                           <div className="text-rose-400 text-xs mt-0.5">💡</div>
+                           <p className="text-stone-400 text-[11px] leading-tight italic">用法：{item.usage}</p>
+                        </div>
+                      )}
+                      
+                      {item.code && (
+                        <div className="mt-4 p-3 bg-stone-50 border border-stone-100 rounded-xl flex items-center justify-between">
+                          <div>
+                            <p className="text-[9px] uppercase tracking-widest font-bold text-stone-400 mb-0.5">Stall / Promo Code</p>
+                            <p className="text-stone-800 font-mono font-bold text-sm tracking-tight">{item.code}</p>
+                          </div>
+                          <button 
+                            onClick={() => { navigator.clipboard.writeText(item.code || ''); alert('已複製！'); }}
+                            className="text-[10px] bg-stone-800 text-white px-3 py-2 rounded-lg font-bold hover:bg-black transition-colors"
+                          >
+                            COPY
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              <p className="text-stone-500 text-sm max-w-md">
-                此行程已根據您的需求調整：上午多為小孩放電或特色景點，下午與傍晚則安排購物，確保兩位女士逛得開心，神隊友與小孩體力充足。
-              </p>
-            </motion.section>
+            </motion.div>
           )}
-        </AnimatePresence>
+
+          {/* Tab Content: Food */}
+          {activeTab === 'food' && (
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {RESTAURANTS.map((restaurant, index) => (
+                <motion.div key={index} variants={itemVariants} className="bg-white rounded-2xl border border-stone-100 overflow-hidden flex flex-col group">
+                  <div className="relative h-48 overflow-hidden bg-stone-100">
+                    <img src={restaurant.imageUrl} alt={restaurant.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute top-4 left-4 bg-teal-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-teal-900/20">{restaurant.category}</div>
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col">
+                    <h3 className="text-lg font-black text-stone-900 mb-2">{restaurant.name}</h3>
+                    <p className="text-stone-500 text-sm mb-4 line-clamp-3 leading-relaxed">{restaurant.recommendation}</p>
+                    <div className="mt-auto pt-4 border-t border-stone-50 flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 bg-stone-50 px-2 py-1 rounded-lg">
+                        <span className="text-amber-500 text-xs font-bold leading-none">★</span>
+                        <span className="font-bold text-stone-800 text-xs leading-none">{restaurant.rating}</span>
+                      </div>
+                      <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' Seoul')}`} target="_blank" rel="noopener noreferrer" className="text-teal-600 text-xs font-black flex items-center gap-1 hover:underline underline-offset-4">OPEN MAP <ExternalLink className="w-3 h-3" /></a>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Tab Content: Info */}
+          {activeTab === 'info' && (
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
+              <div className="grid grid-cols-1 gap-4">
+                {ESSENTIAL_INFO.map((item, index) => (
+                  <motion.div key={index} variants={itemVariants} className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm flex gap-4 items-start">
+                    <div className="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-teal-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-black text-stone-900 text-lg mb-1 leading-tight">{item.title}</h3>
+                      <p className="text-stone-500 text-sm leading-relaxed">{item.content}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <div className="bg-stone-900 rounded-3xl p-8 text-white relative overflow-hidden">
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-teal-600/20 rounded-full -mb-16 -mr-16 blur-3xl opacity-50" />
+                <h3 className="text-xl font-black mb-6 flex items-center gap-3 leading-none">
+                  <Bus className="w-6 h-6 text-teal-400" />
+                  交通與通訊指南
+                </h3>
+                <div className="space-y-6">
+                  {TRANSPORT_INFO.map((info, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0 border border-white/10">
+                        {info.type === 'net' ? <Navigation className="w-5 h-5 text-teal-400" /> : <Train className="w-5 h-5 text-teal-400" />}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-white text-sm">{info.name}</h4>
+                        <p className="text-stone-400 text-xs mt-1 leading-relaxed">{info.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </div>
       </main>
 
-      <footer className="bg-stone-800 text-stone-300 py-6 text-center mt-auto">
-        <p className="text-sm italic">"讓旅行成為全家人的美好記憶" ‧ 客製化行程系統</p>
+      {/* Mobile Footer - Hidden on Desktop */}
+      <footer className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-stone-100 p-2 md:hidden flex justify-around items-center z-50">
+        {[
+          { id: 'itinerary', label: '行程', icon: Calendar },
+          { id: 'food', label: '美食', icon: Utensils },
+          { id: 'shopping', label: '購物', icon: ShoppingBag },
+          { id: 'info', label: '資訊', icon: Info },
+        ].map(tab => (
+          <button key={tab.id} onClick={() => setActiveTab(tab.id as any)} className={`flex flex-col items-center gap-1.5 transition-all px-4 py-2 rounded-2xl ${activeTab === tab.id ? 'text-teal-600 bg-teal-50 shadow-sm' : 'text-stone-400'}`}>
+            <tab.icon className="w-5 h-5" />
+            <span className="text-[10px] font-black tracking-tighter">{tab.label}</span>
+          </button>
+        ))}
       </footer>
     </div>
   );
 }
 
-function Badge({ children, icon, color }: { children: React.ReactNode, icon: React.ReactNode, color: 'amber' | 'rose' | 'blue' | 'red' }) {
-  const colors = {
-    amber: "bg-amber-100 text-amber-800 border-amber-200",
-    rose: "bg-rose-100 text-rose-800 border-rose-200",
-    blue: "bg-blue-100 text-blue-800 border-blue-200",
-    red: "bg-red-100 text-red-800 border-red-200",
-  };
-
-  return (
-    <span className={cn("flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold border", colors[color])}>
-      {icon}
-      {children}
-    </span>
-  );
-}
-
-function TabButton({ children, active, onClick, icon }: { children: React.ReactNode, active: boolean, onClick: () => void, icon: React.ReactNode }) {
-  return (
-    <button 
-      onClick={onClick}
-      className={cn(
-        "flex items-center gap-2 whitespace-nowrap py-4 px-3 text-sm md:text-base transition-all border-b-4",
-        active 
-          ? "border-teal-600 text-teal-600 font-bold" 
-          : "border-transparent text-stone-500 hover:text-teal-400"
-      )}
-    >
-      {icon}
-      {children}
-    </button>
-  );
-}
+export default App;
