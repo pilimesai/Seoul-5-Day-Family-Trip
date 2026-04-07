@@ -28,9 +28,9 @@ export const ITINERARY_DATA: DayData[] = [
     highlights: "醫美、DIY、超市大掃貨",
     sections: [
       { time: "10:00", text: "【分頭行動】👩 媽媽前往 Forena Clinic 醫美；👨 爸爸帶小孩去 Object 進行布章手作 DIY。" },
-      { time: "12:30", text: "午餐：多樂套雞湯飯（濃郁雞骨湯，小孩友善）。" },
+      { time: "12:30", text: "午餐：風川鰻魚 (Pungcheon Jangeo) - 弘大名店，炭火現烤國產鰻魚（無牛羊）。" },
       { time: "14:30", text: "昌信洞文具玩具批發市場：五歲男童的放電天堂。" },
-      { time: "16:30", text: "晚餐：<strong>天雞一隻雞 (新堂站)</strong>。提早吃免排隊。" },
+      { time: "16:30", text: "晚餐：<strong>天雞一隻雞 (新堂站)</strong>。提早吃免排隊（或可選安國站<strong>神仙豬排</strong>）。" },
       { time: "19:00", text: "首爾站 Lotte Outlets (買 TNF 外套) ＆ 樂天超市買伴手禮。" }
     ]
   },
@@ -70,7 +70,9 @@ export const MAP_LOCATIONS: MapGroup[] = [
     locations: [
       { name: "🧸 文具批發市場", q: "Changsin-dong Toy Market" },
       { name: "🍲 天雞一隻雞", q: "Tien-Ji Chicken Shindang" },
-      { name: "🛒 樂天超市首爾站", q: "Lotte Mart Seoul Station" }
+      { name: "🛒 樂天超市首爾站", q: "Lotte Mart Seoul Station" },
+      { name: "🐍 風川鰻魚 弘大", q: "Pungcheon Jangeo Hongdae" },
+      { name: "🐷 神仙豬排 安國", q: "God of Tonkatsu Anguk" }
     ]
   },
   {
@@ -87,6 +89,8 @@ export const FOOD_DATA: FoodItem[] = [
   { name: "麻浦帝王蟹 (3112攤位)", desc: "位於麻浦農水產物市場 3112 號，新鮮海產現場挑選蒸煮，無牛羊隱憂。", tag: "海鮮" },
   { name: "豬腳小姐", desc: "弘大名店，蒜味豬腳肥而不膩，搭配冷麵超讚。", tag: "豬肉" },
   { name: "天雞一隻雞", desc: "清淡鮮美雞湯，適合小孩拌飯吃。", tag: "雞肉" },
+  { name: "風川鰻魚", desc: "弘大必吃名店，炭火現烤國產鰻魚，外焦內嫩，無牛羊隱憂。", tag: "海鮮" },
+  { name: "神仙豬排 (安國站)", desc: "安國站名店，厚實多汁的炸豬排，深受在地人與遊客喜愛。", tag: "豬肉" },
   { name: "厚切炸豬排", desc: "聖水洞名物，外酥內嫩，高品質豬肉料理。", tag: "豬肉" }
 ];
 
