@@ -1,4 +1,4 @@
-import { DayData, MapGroup, FoodItem, ShoppingItem } from './types';
+import { DayData, MapGroup, FoodItem, ShoppingItem, CouponItem } from './types';
 
 export const ITINERARY_DATA: DayData[] = [
   {
@@ -61,26 +61,26 @@ export const MAP_LOCATIONS: MapGroup[] = [
   {
     day: "Day 1-2 弘大與周邊",
     locations: [
-      { name: "🦀 麻浦農水產市場 (3112攤位)", q: "Mapo Agricultural and Marine Products Market" },
-      { name: "🍖 豬腳小姐", q: "Myth Jokbal Hongdae" }
+      { name: "🦀 麻浦農水產市場 (3112攤位)", q: "Mapo Agricultural and Marine Products Market", naverQ: "마포농수산물시장" },
+      { name: "🍖 豬腳小姐", q: "Myth Jokbal Hongdae", naverQ: "미쓰족발 홍대본점" }
     ]
   },
   {
     day: "Day 3 首爾站與新堂",
     locations: [
-      { name: "🧸 文具批發市場", q: "Changsin-dong Toy Market" },
-      { name: "🍲 天雞一隻雞", q: "Tien-Ji Chicken Shindang" },
-      { name: "🛒 樂天超市首爾站", q: "Lotte Mart Seoul Station" },
-      { name: "🐍 風川鰻魚 弘大", q: "Pungcheon Jangeo Hongdae" },
-      { name: "🐷 神仙豬排 安國", q: "God of Tonkatsu Anguk" }
+      { name: "🧸 文具批發市場", q: "Changsin-dong Toy Market", naverQ: "창신동 문구완구시장" },
+      { name: "🍲 天雞一隻雞", q: "Tien-Ji Chicken Shindang", naverQ: "천계닭한마리" },
+      { name: "🛒 樂天超市首爾站", q: "Lotte Mart Seoul Station", naverQ: "롯데마트 서울역점" },
+      { name: "🐍 風川鰻魚 弘大", q: "Pungcheon Jangeo Hongdae", naverQ: "풍천장어 홍대" },
+      { name: "🐷 神仙豬排 安國", q: "God of Tonkatsu Anguk", naverQ: "신선돈까스 안국" }
     ]
   },
   {
     day: "Day 4-5 聖水與合井",
     locations: [
-      { name: "🐘 首爾大公園", q: "Seoul Grand Park" },
-      { name: "☕ Cafe Onion 聖水", q: "Cafe Onion Seongsu" },
-      { name: "🌿 Urban Plant 合井", q: "Urban Plant Hapjeong" }
+      { name: "🐘 首爾大公園", q: "Seoul Grand Park", naverQ: "서울대공원" },
+      { name: "☕ Cafe Onion 聖水", q: "Cafe Onion Seongsu", naverQ: "어니언 성수" },
+      { name: "🌿 Urban Plant 合井", q: "Urban Plant Hapjeong", naverQ: "어반플랜特 합정" }
     ]
   }
 ];
@@ -166,14 +166,40 @@ export const SHOPPING_DATA: ShoppingItem[] = [
     nameKr: "셀메드 리페어 크림",
     loc: "各大藥局", 
     desc: "強效修護受損肌膚，醫美術後亦可使用。"
-  },
+  }
+];
+
+export const COUPON_DATA: CouponItem[] = [
   {
-    name: "SPAO 弘大店 (童裝/服飾)",
-    nameKr: "스파오 홍대점",
-    loc: "弘大入口站 9號出口",
-    desc: "韓國必買平價服飾。出示 Klook 九折優惠券（憑證號：KLK8176732787，訂單號：WFY135546）。",
+    brand: "SPAO",
+    title: "SPAO 弘大店 九折優惠券",
+    subtitle: "Klook 獨家優惠",
+    desc: "出示憑證即可享有九折優惠。憑證號：KLK8176732787，訂單號：WFY135546。",
     code: "KLK8176732787",
     image: "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=KLK8176732787"
+  },
+  {
+    brand: "Lotte Mart",
+    title: "Lotte Mart KRW 6,000 折扣券",
+    subtitle: "KKday 獨家行動現金券",
+    desc: "滿 KRW 100,000 可折抵 KRW 6,000。韓國的臺灣旅客專屬優惠。",
+    barcode: "9 119200 000237",
+    validity: "2026.02.23 ~ 08.31",
+    color: "#46C1CE"
+  },
+  {
+    brand: "Lotte",
+    title: "樂天觀光會員卡 (Lotte Tourist Card)",
+    subtitle: "護照免費辦理 ‧ 購物交通二合一",
+    desc: "於樂天百貨明洞總店 1F Tax Refund Lounge 持護照免費辦理。享百貨 95 折、免稅店/7-11 9 折、超市 93 折。可當交通卡使用並累積 L.POINT。",
+    color: "#E30613"
+  },
+  {
+    brand: "Lotte Duty Free",
+    title: "樂天線上免稅店 (APP 購物)",
+    subtitle: "線上購買 ‧ 機場取貨 ‧ 價格最優",
+    desc: "推薦下載 APP 線上購買，比實體店更便宜。可搭配 EXIM Pay+ 付款。OLENS、隱形眼鏡、香水價差極大。出境前於機場 T1/T2 指定櫃檯領取，不佔行李重量。",
+    color: "#D4AF37"
   }
 ];
 

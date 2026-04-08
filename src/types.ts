@@ -13,6 +13,7 @@ export interface DayData {
 export interface MapLocation {
   name: string;
   q: string;
+  naverQ?: string;
 }
 
 export interface MapGroup {
@@ -33,4 +34,16 @@ export interface ShoppingItem {
   desc: string;
   code?: string;
   image?: string;
+}
+
+export interface CouponItem {
+  title: string;
+  subtitle?: string;
+  desc: string;
+  code?: string;
+  barcode?: string;
+  image?: string;
+  validity?: string;
+  brand: string;
+  color?: string;
 }

@@ -17,13 +17,16 @@ import {
   Lightbulb, 
   TrainFront, 
   Pill,
-  ChevronRight
+  ChevronRight,
+  Ticket,
+  Barcode,
+  ExternalLink
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PieChart as RePieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { ITINERARY_DATA, MAP_LOCATIONS, FOOD_DATA, SHOPPING_DATA, ANALYTICS_DATA, SHOPPING_SOURCE, SHOPPING_URL } from './constants';
+import { ITINERARY_DATA, MAP_LOCATIONS, FOOD_DATA, SHOPPING_DATA, ANALYTICS_DATA, SHOPPING_SOURCE, SHOPPING_URL, COUPON_DATA } from './constants';
 
 /**
  * Utility for merging tailwind classes
@@ -32,7 +35,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-type TabType = 'itinerary' | 'map' | 'food' | 'shopping' | 'analytics';
+type TabType = 'itinerary' | 'map' | 'food' | 'shopping' | 'coupons' | 'analytics';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('itinerary');
@@ -42,6 +45,14 @@ export default function App() {
   const currentDayData = useMemo(() => 
     ITINERARY_DATA.find(d => d.day === activeDay) || ITINERARY_DATA[0]
   , [activeDay]);
+
+  const selectedLocation = useMemo(() => {
+    for (const group of MAP_LOCATIONS) {
+      const found = group.locations.find(l => l.q === activeMapQuery);
+      if (found) return found;
+    }
+    return null;
+  }, [activeMapQuery]);
 
   return (
     <div className="bg-stone-50 text-stone-800 antialiased min-h-screen flex flex-col">
@@ -97,6 +108,13 @@ export default function App() {
             icon={<ShoppingBag className="w-4 h-4" />}
           >
             必買藥妝
+          </TabButton>
+          <TabButton 
+            active={activeTab === 'coupons'} 
+            onClick={() => setActiveTab('coupons')}
+            icon={<Ticket className="w-4 h-4" />}
+          >
+            折價券
           </TabButton>
           <TabButton 
             active={activeTab === 'analytics'} 
@@ -214,14 +232,32 @@ export default function App() {
                   </div>
                 ))}
               </div>
-              <div className="md:w-2/3 bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden relative min-h-[300px]">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  loading="lazy" 
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(activeMapQuery)}&output=embed`}
-                />
+              <div className="md:w-2/3 bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden relative min-h-[300px] flex flex-col">
+                <div className="p-3 border-b flex justify-between items-center bg-stone-50">
+                  <span className="text-sm font-bold text-stone-700 truncate mr-2">
+                    {selectedLocation?.name || "地圖預覽"}
+                  </span>
+                  {selectedLocation?.naverQ && (
+                    <a 
+                      href={`https://map.naver.com/v5/search/${encodeURIComponent(selectedLocation.naverQ)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 px-3 py-1.5 bg-[#03C75A] text-white text-xs font-bold rounded-full hover:bg-[#02b351] transition shadow-sm shrink-0"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      Naver Map
+                    </a>
+                  )}
+                </div>
+                <div className="flex-grow">
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    loading="lazy" 
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(activeMapQuery)}&output=embed`}
+                  />
+                </div>
               </div>
             </motion.section>
           )}
@@ -306,6 +342,116 @@ export default function App() {
             </motion.section>
           )}
 
+          {activeTab === 'coupons' && (
+            <motion.section 
+              key="coupons"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+              {COUPON_DATA.map((coupon, idx) => (
+                <div 
+                  key={idx} 
+                  className={cn(
+                    "border-2 border-dashed rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow relative",
+                    coupon.color ? "border-white/20" : "bg-white border-stone-200"
+                  )}
+                  style={coupon.color ? { backgroundColor: coupon.color, color: 'white' } : {}}
+                >
+                  {/* Coupon Notch Effect */}
+                  <div className={cn(
+                    "absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-r-2 border-dashed",
+                    coupon.color ? "bg-stone-50 border-white/20" : "bg-stone-50 border-stone-200"
+                  )} />
+                  <div className={cn(
+                    "absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-l-2 border-dashed",
+                    coupon.color ? "bg-stone-50 border-white/20" : "bg-stone-50 border-stone-200"
+                  )} />
+                  
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <span className={cn(
+                          "inline-block px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider mb-1",
+                          coupon.color ? "bg-white/20 text-white" : "bg-stone-100 text-stone-600"
+                        )}>
+                          {coupon.brand}
+                        </span>
+                        <h3 className={cn(
+                          "text-xl font-black leading-tight",
+                          coupon.color ? "text-white" : "text-stone-900"
+                        )}>{coupon.title}</h3>
+                        {coupon.subtitle && (
+                          <p className={cn(
+                            "text-xs font-bold mt-1",
+                            coupon.color ? "text-white/80" : "text-teal-600"
+                          )}>{coupon.subtitle}</p>
+                        )}
+                      </div>
+                      <div className={cn(
+                        "w-12 h-12 rounded-full flex items-center justify-center shrink-0",
+                        coupon.color ? "bg-white/20 text-white" : "bg-teal-50 text-teal-600"
+                      )}>
+                        <Ticket className="w-6 h-6" />
+                      </div>
+                    </div>
+                    
+                    <p className={cn(
+                      "text-sm mb-4 leading-relaxed",
+                      coupon.color ? "text-white/90" : "text-stone-600"
+                    )}>{coupon.desc}</p>
+                    
+                    {coupon.image && (
+                      <div className="mb-4 rounded-lg overflow-hidden border border-stone-100 bg-white p-2">
+                        <img 
+                          src={coupon.image} 
+                          alt={coupon.title} 
+                          className="w-full h-auto max-w-[200px] mx-auto"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    )}
+
+                    {coupon.barcode && (
+                      <div className="bg-white p-4 border rounded-xl flex flex-col items-center gap-2">
+                        <img 
+                          src={`https://bwipjs-api.metafloor.com/?bcid=ean13&text=${coupon.barcode.replace(/\s/g, '')}&scale=2&rotate=N&includetext=false`}
+                          alt="Barcode"
+                          className="w-full h-16 object-contain"
+                          referrerPolicy="no-referrer"
+                        />
+                        <span className="font-mono text-lg font-bold tracking-[0.1em] text-stone-800">{coupon.barcode}</span>
+                      </div>
+                    )}
+
+                    {coupon.code && (
+                      <div className={cn(
+                        "mt-2 p-3 border border-dashed rounded-lg flex flex-col items-center",
+                        coupon.color ? "bg-white/10 border-white/30 text-white" : "bg-amber-50 border-amber-300 text-amber-900"
+                      )}>
+                        <span className={cn(
+                          "text-[10px] font-bold uppercase mb-1",
+                          coupon.color ? "text-white/60" : "text-amber-600"
+                        )}>Promo Code</span>
+                        <span className="text-xl font-mono font-black">{coupon.code}</span>
+                      </div>
+                    )}
+
+                    {coupon.validity && (
+                      <div className={cn(
+                        "mt-4 pt-4 border-t flex items-center justify-center gap-2 text-[10px] font-bold uppercase",
+                        coupon.color ? "border-white/20 text-white/60" : "border-stone-100 text-stone-400"
+                      )}>
+                        <span>Validity:</span>
+                        <span>{coupon.validity}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </motion.section>
+          )}
           {activeTab === 'analytics' && (
             <motion.section 
               key="analytics"
