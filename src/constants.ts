@@ -7,8 +7,10 @@ export const ITINERARY_DATA: DayData[] = [
     highlights: "AREX、帝王蟹、人生四格",
     sections: [
       { time: "11:00", text: "抵達仁川機場，搭乘<strong>AREX 普通車</strong> 往弘大入口站。" },
-      { time: "15:00", text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹（非牛羊海鮮大餐）。" },
-      { time: "18:00", text: "弘大商圈逛街：SPAO (買童裝)、Olive Young (補藥妝)、全家拍「人生四格」照片。" }
+      { time: "13:00", text: "午餐：波妞推薦 <strong>豚壽百豬肉湯飯</strong>（濃郁白湯，五歲小孩超愛，嚴禁牛羊者首選）。" },
+      { time: "15:00", text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹。" },
+      { time: "18:00", text: "弘大商圈詳細攻略：可參考紹紹推薦清單：<br/>- <strong>MMLG</strong>：在地知名街頭品牌。<br/>- <strong>What It Isnt</strong>：經典天使 Logo 潮流服飾。<br/>- <strong>Butter</strong>：生活雜貨選物店（小孩超愛）。<br/>- <strong>Lee / Fallett</strong>：休閒與設計感品牌。<br/>- <strong>Sigonggan</strong>：整面牆的耳環飾品天花板。<br/>- <strong>Common Unique</strong>：韓劇常見的甜美韓系穿搭。<br/>- <strong>Supernova</strong>：復古美式校園風服飾。<br/>- <strong>MUSINSA Standard</strong>：韓國版 Uniqlo，必買修身西裝褲。" },
+      { time: "20:30", text: "拍「人生四格」照片，留下珍貴家庭回憶。" }
     ]
   },
   {
@@ -41,7 +43,7 @@ export const ITINERARY_DATA: DayData[] = [
     sections: [
       { time: "09:30", text: "早餐：Egg Drop 爆餡吐司。" },
       { time: "11:00", text: "<strong>首爾大公園</strong>：搭大象列車看動物。戶外放電時間。" },
-      { time: "15:00", text: "聖水洞探索：媽媽逛 Dior 概念店與 Musinsa Standard；爸爸與小孩在 Cafe Onion 享用麵包。" },
+      { time: "15:00", text: "聖水洞探索：除了 Dior 與 Musinsa，可參考波妞推薦清單：<strong>Tamburins</strong> (香氛/護手霜)、<strong>Rockfish</strong> (雪靴/芭蕾舞鞋)、<strong>Point of View</strong> (質感文具)、<strong>Fwee Agit</strong> (果凍彩妝)；墨鏡必看 <strong>Blue Elephant</strong> (平價) 與 <strong>Gentle Monster</strong> (旗艦大店)；麵包控必排 <strong>自然島鹽可頌</strong> 或 <strong>Meal° 吐司</strong>；想吃杜拜巧克力可去 <strong>Rain Report</strong>。" },
       { time: "18:00", text: "晚餐：聖水洞厚切炸豬排（小孩最愛）。" }
     ]
   },
@@ -62,7 +64,15 @@ export const MAP_LOCATIONS: MapGroup[] = [
     day: "Day 1-2 弘大與周邊",
     locations: [
       { name: "🦀 麻浦農水產市場 (3112攤位)", q: "Mapo Agricultural and Marine Products Market", naverQ: "마포농수산물시장" },
-      { name: "🍖 豬腳小姐", q: "Myth Jokbal Hongdae", naverQ: "미쓰족발 홍대본점" }
+      { name: "🍖 豬腳小姐", q: "Myth Jokbal Hongdae", naverQ: "미쓰족발 홍대본점" },
+      { name: "🍲 豚壽百 弘大直營店", q: "Donsubaek Hongdae", naverQ: "돈수백 홍대직영점" },
+      { name: "🛍️ MMLG (在地街頭潮牌)", q: "MMLG Hongdae", naverQ: "87MM" },
+      { name: "🛍️ What It Isnt (天使Logo潮服)", q: "What It Isnt Hongdae", naverQ: "와릿이즌 홍대" },
+      { name: "🧸 Butter (雜貨選物店)", q: "Butter Hongdae", naverQ: "버터 홍대점" },
+      { name: "👖 Lee (美式丹寧休閒)", q: "Lee Hongdae", naverQ: "리 홍대" },
+      { name: "💍 Sigonggan (耳環飾品)", q: "Sigonggan Hongdae", naverQ: "시공간 홍대" },
+      { name: "👗 Common Unique (韓系服飾)", q: "Common Unique Hongdae", naverQ: "커먼유니크" },
+      { name: "🏢 MUSINSA Standard 弘大", q: "MUSINSA Standard Hongdae", naverQ: "무신사 스탠다드 홍대" }
     ]
   },
   {
@@ -80,6 +90,15 @@ export const MAP_LOCATIONS: MapGroup[] = [
     locations: [
       { name: "🐘 首爾大公園", q: "Seoul Grand Park", naverQ: "서울대공원" },
       { name: "☕ Cafe Onion 聖水", q: "Cafe Onion Seongsu", naverQ: "어니언 성수" },
+      { name: "🛍️ Rockfish (雪靴/芭蕾舞鞋)", q: "Rockfish Weatherwear Seongsu", naverQ: "락피쉬웨더웨어 성수" },
+      { name: "💄 Fwee Agit (腮紅/彩妝)", q: "Fwee Agit Seongsu", naverQ: "퓌 아지트 성수" },
+      { name: "✒️ Point of View (文具選物)", q: "Point of View Seoul", naverQ: "포인트오브뷰" },
+      { name: "🕶️ Blue Elephant (平價墨鏡)", q: "Blue Elephant Seongsu", naverQ: "블루엘리펀트 성수" },
+      { name: "🕶️ Gentle Monster (高端墨鏡)", q: "Gentle Monster Seongsu Flagship", naverQ: "젠틀몬스터 성수 플래그십스토어" },
+      { name: "🕶️ Fake Me (潮流眼鏡)", q: "Fake Me Seongsu", naverQ: "페이크미 성수" },
+      { name: "🥐 自然島鹽可頌 聖水", q: "Jayeondo Salt Bread Seongsu", naverQ: "자연도소금빵 성수" },
+      { name: "🍞 Meal° (吐司/麵包) 聖水", q: "Meal Seoul Seongsu", naverQ: "밀도 성수본점" },
+      { name: "🍫 Rain Report (杜拜巧克力)", q: "Rain Report Croissant Seongsu", naverQ: "레인리포트 크루아상" },
       { name: "🌿 Urban Plant 合井", q: "Urban Plant Hapjeong", naverQ: "어반플랜特 합정" }
     ]
   }
@@ -91,7 +110,9 @@ export const FOOD_DATA: FoodItem[] = [
   { name: "天雞一隻雞", desc: "清淡鮮美雞湯，適合小孩拌飯吃。", tag: "雞肉" },
   { name: "風川鰻魚", desc: "弘大必吃名店，炭火現烤國產鰻魚，外焦內嫩，無牛羊隱憂。", tag: "海鮮" },
   { name: "神仙豬排 (安國站)", desc: "安國站名店，厚實多汁的炸豬排，深受在地人與遊客喜愛。", tag: "豬肉" },
-  { name: "厚切炸豬排", desc: "聖水洞名物，外酥內嫩，高品質豬肉料理。", tag: "豬肉" }
+  { name: "厚切炸豬排", desc: "聖水洞名物，外酥內嫩，高品質豬肉料理。", tag: "豬肉" },
+  { name: "🥐 自然島鹽可頌 (자연도소금빵)", desc: "聖水洞排隊神店！每日限量出爐，口感Q彈奶油香濃郁。建議提早去領取號碼牌。", tag: "麵包" },
+  { name: "🍞 Meal° (밀도) 聖水店", desc: "以吐司聞名的小店，咖哩麵包與栗子吐司非常受歡迎。位在聖水洞入口處。", tag: "麵包" }
 ];
 
 export const SHOPPING_DATA: ShoppingItem[] = [
@@ -166,6 +187,43 @@ export const SHOPPING_DATA: ShoppingItem[] = [
     nameKr: "셀메드 리페어 크림",
     loc: "各大藥局", 
     desc: "強效修護受損肌膚，醫美術後亦可使用。"
+  },
+  /* --- Olive Young 必買清單 (阿圓推薦 & Threads 熱門) --- */
+  {
+    name: "BioHeal BOH 膠原蛋白除皺貼",
+    nameKr: "프로바이오덤 T3 콜라겐 패치",
+    loc: "Olive Young",
+    desc: "【特殊護理】影片強烈推薦！針對抬頭紋、法令紋與瘦臉設計，貼著睡覺效果顯著。"
+  },
+  {
+    name: "fwee 布丁唇頰泥",
+    nameKr: "fwee 푸딩팟",
+    loc: "Olive Young / 弘大旗艦店",
+    desc: "【流行彩妝】Threads 爆紅款！質地如布丁般絲滑，唇頰兩用，顏色極美。"
+  },
+  {
+    name: "UNOVE 深層修護髮膜",
+    nameKr: "어노브 딥 데미지 트리트먼트",
+    loc: "Olive Young",
+    desc: "【美髮護理】國民級髮膜，針對受損髮質修復力極強，味道高級。"
+  },
+  {
+    name: "ilso 溫和去黑頭鼻貼",
+    nameKr: "일소 네추럴 마일드 클리어 코팩",
+    loc: "Olive Young",
+    desc: "【特殊護理】不傷毛孔的去黑頭神器，敷完導出黑頭再刮除，效果驚人。"
+  },
+  {
+    name: "Torriden 低分子玻尿酸精華",
+    nameKr: "토리든 다이브인 세럼",
+    loc: "Olive Young",
+    desc: "【基礎保養】長期佔據榜單第一，補水首選。"
+  },
+  {
+    name: "Delight Project 貝果餅乾",
+    nameKr: "딜라이트 프로젝트 베이글칩",
+    loc: "Olive Young",
+    desc: "【健康零食】回購率 100% 的低卡零食，蜂蜜奶油味必帶。"
   }
 ];
 

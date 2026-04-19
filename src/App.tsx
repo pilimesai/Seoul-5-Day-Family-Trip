@@ -26,6 +26,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PieChart as RePieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { ShoppingItem } from './types';
 import { ITINERARY_DATA, MAP_LOCATIONS, FOOD_DATA, SHOPPING_DATA, ANALYTICS_DATA, SHOPPING_SOURCE, SHOPPING_URL, COUPON_DATA } from './constants';
 
 /**
@@ -288,46 +289,38 @@ export default function App() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="space-y-6"
+              className="space-y-10"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {SHOPPING_DATA.map((item, idx) => (
-                  <div key={idx} className="bg-white p-5 border rounded-xl shadow-sm border-l-4 border-l-rose-500 hover:shadow-md transition">
-                    <div className="flex gap-4 items-start">
-                      <div className="w-10 h-10 bg-rose-50 flex items-center justify-center rounded-full text-rose-500 shrink-0">
-                        <Pill className="w-5 h-5" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-baseline gap-2 mb-1">
-                          <h3 className="font-bold text-stone-800">{item.name}</h3>
-                          {item.nameKr && <span className="text-xs text-stone-400 font-medium">{item.nameKr}</span>}
-                        </div>
-                        <p className="text-xs text-rose-600 font-bold mb-2">{item.loc}</p>
-                        <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
-                        {item.image && (
-                          <div className={clsx(
-                            "mt-3 rounded-lg overflow-hidden border border-stone-200",
-                            item.code ? "max-w-[200px] mx-auto" : "w-full"
-                          )}>
-                            <img 
-                              src={item.image} 
-                              alt={item.name} 
-                              className="w-full h-auto"
-                              referrerPolicy="no-referrer"
-                            />
-                          </div>
-                        )}
-                        {item.code && (
-                          <div className="mt-3 p-2 bg-amber-50 border border-dashed border-amber-300 rounded flex items-center justify-between">
-                            <span className="text-[10px] font-bold text-amber-700 uppercase">Promo Code</span>
-                            <span className="text-sm font-mono font-bold text-amber-900">{item.code}</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+              {/* Pharmacy Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-rose-200">
+                  <div className="p-2 bg-rose-100 rounded-lg text-rose-600">
+                    <Pill className="w-6 h-6" />
                   </div>
-                ))}
+                  <h2 className="text-2xl font-black text-stone-800 tracking-tight">專業藥局必買 <span className="text-sm font-medium text-stone-400 ml-2">Pharmacy Only</span></h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {SHOPPING_DATA.filter(item => item.loc.includes('藥局')).map((item, idx) => (
+                    <ShoppingCard key={idx} item={item} type="pharmacy" />
+                  ))}
+                </div>
               </div>
+
+              {/* Olive Young Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-green-200">
+                  <div className="p-2 bg-green-100 rounded-lg text-green-700">
+                    <ShoppingBag className="w-6 h-6" />
+                  </div>
+                  <h2 className="text-2xl font-black text-stone-800 tracking-tight">Olive Young 必買 <span className="text-sm font-medium text-stone-400 ml-2">Beauty & Life</span></h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {SHOPPING_DATA.filter(item => item.loc.includes('Olive Young')).map((item, idx) => (
+                    <ShoppingCard key={idx} item={item} type="olive" />
+                  ))}
+                </div>
+              </div>
+
               <div className="mt-8 p-4 bg-stone-100 rounded-lg text-xs text-stone-500 italic text-center border border-stone-200">
                 <p>{SHOPPING_SOURCE}</p>
                 <a 
@@ -493,6 +486,58 @@ export default function App() {
       <footer className="bg-stone-800 text-stone-300 py-6 text-center mt-auto">
         <p className="text-sm italic">"讓旅行成為全家人的美好記憶" ‧ 客製化行程系統</p>
       </footer>
+    </div>
+  );
+}
+
+function ShoppingCard({ item, type }: { item: ShoppingItem, type: 'pharmacy' | 'olive', key?: React.Key }) {
+  const isPharmacy = type === 'pharmacy';
+  
+  return (
+    <div className={cn(
+      "bg-white p-5 border rounded-xl shadow-sm hover:shadow-md transition border-l-4",
+      isPharmacy ? "border-l-rose-500" : "border-l-green-500"
+    )}>
+      <div className="flex gap-4 items-start">
+        <div className={cn(
+          "w-10 h-10 flex items-center justify-center rounded-full shrink-0",
+          isPharmacy ? "bg-rose-50 text-rose-500" : "bg-green-50 text-green-600"
+        )}>
+          {isPharmacy ? <Pill className="w-5 h-5" /> : <ShoppingBag className="w-5 h-5" />}
+        </div>
+        <div className="flex-1">
+          <div className="flex flex-wrap items-baseline gap-2 mb-1">
+            <h3 className="font-bold text-stone-800">{item.name}</h3>
+            {item.nameKr && <span className="text-xs text-stone-400 font-medium">{item.nameKr}</span>}
+          </div>
+          <p className={cn(
+            "text-[10px] inline-block px-1.5 py-0.5 rounded font-bold mb-2",
+            isPharmacy ? "bg-rose-100 text-rose-600" : "bg-green-100 text-green-700"
+          )}>
+            {item.loc}
+          </p>
+          <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+          {item.image && (
+            <div className={cn(
+              "mt-3 rounded-lg overflow-hidden border border-stone-200",
+              item.code ? "max-w-[200px] mx-auto" : "w-full"
+            )}>
+              <img 
+                src={item.image} 
+                alt={item.name} 
+                className="w-full h-auto"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          )}
+          {item.code && (
+            <div className="mt-3 p-2 bg-amber-50 border border-dashed border-amber-300 rounded flex items-center justify-between">
+              <span className="text-[10px] font-bold text-amber-700 uppercase">Promo Code</span>
+              <span className="text-sm font-mono font-bold text-amber-900">{item.code}</span>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
