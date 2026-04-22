@@ -20,7 +20,12 @@ import {
   ChevronRight,
   Ticket,
   Barcode,
-  ExternalLink
+  ExternalLink,
+  Car,
+  Train,
+  Bus,
+  Footprints,
+  Info
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PieChart as RePieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
@@ -147,8 +152,20 @@ export default function App() {
                   <li className="flex items-start text-stone-700 text-sm">
                     <TrainFront className="w-4 h-4 text-blue-500 mt-1 mr-2 shrink-0" />
                     <div>
-                      <strong className="text-blue-600 block mb-0.5">交通大雷區：AREX 機場快線</strong>
-                      前往弘大請務必搭乘藍色的 <strong>普通車 (All-stop)</strong>！千萬別買直達車，會過站不停。
+                      <strong className="text-blue-600 block mb-0.5">交通攻略：AREX 與機場電梯動線</strong>
+                      前往弘大請務必搭乘藍色的 <strong>普通車 (All-stop)</strong>！<br/>
+                      <div className="mt-2 p-3 bg-white border border-blue-100 rounded-lg shadow-sm">
+                        <p className="font-bold text-blue-700 mb-1 leading-none flex items-center gap-1">
+                          🛗 機場「全程電梯」推車動線：
+                        </p>
+                        <ul className="space-y-1 text-xs text-stone-600">
+                          <li>1. 抵達大廳 (1F) 後，前往 <strong>7 號或 8 號門</strong> 附近的電梯。</li>
+                          <li>2. 搭電梯降至 <strong>地下 B1 層 (交通中心)</strong>。</li>
+                          <li>3. 沿著「Airport Railroad」地標前進，地面有藍色線條引導。</li>
+                          <li>4. 進入 AREX 閘口前，找兩側的 <strong>專用寬閘口</strong> 或電梯直達 <strong>B4/B3 月台</strong>。</li>
+                          <li>5. <strong>弘大站</strong>：抵達後搭電梯至 B1 穿堂，從 <strong>3 號或 7 號出口</strong> 電梯直登地面。</li>
+                        </ul>
+                      </div>
                     </div>
                   </li>
                   <li className="flex items-start text-stone-700 text-sm">
@@ -183,17 +200,52 @@ export default function App() {
                     <span>Day {currentDayData.day}: {currentDayData.title}</span>
                     <span className="text-xs font-normal text-stone-400 hidden sm:inline">{currentDayData.highlights}</span>
                   </h2>
-                  <div className="space-y-6">
+                  <div className="space-y-8 relative before:absolute before:left-[11px] before:top-4 before:bottom-4 before:w-0.5 before:bg-teal-100 md:before:hidden">
                     {currentDayData.sections.map((sec, idx) => (
-                      <div key={idx} className="flex flex-col md:flex-row gap-2 group">
-                        <div className="md:w-20 font-bold text-teal-600 shrink-0 flex items-center md:items-start">
-                          <span className="bg-teal-50 px-2 py-1 rounded md:bg-transparent md:p-0">{sec.time}</span>
-                          <ChevronRight className="w-4 h-4 ml-1 md:hidden text-teal-300" />
+                      <div key={idx} className="flex flex-col md:flex-row gap-4 group relative">
+                        <div className="md:w-28 shrink-0 flex items-center md:items-start gap-3">
+                          <div className="w-6 h-6 rounded-full bg-white border-2 border-teal-500 z-10 flex items-center justify-center shrink-0 md:hidden">
+                            <div className="w-2 h-2 rounded-full bg-teal-500" />
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="font-mono text-lg font-black text-teal-600 block leading-none">{sec.time}</span>
+                            {sec.transport && (
+                              <div className="hidden md:flex items-center gap-1 mt-2 text-[10px] font-bold uppercase tracking-widest text-teal-400">
+                                {sec.transport === 'taxi' && <Car className="w-3 h-3" />}
+                                {sec.transport === 'subway' && <Train className="w-3 h-3" />}
+                                {sec.transport === 'bus' && <Bus className="w-3 h-3" />}
+                                {sec.transport === 'walk' && <Footprints className="w-3 h-3" />}
+                                {sec.transport}
+                              </div>
+                            )}
+                          </div>
                         </div>
-                        <div 
-                          className="text-stone-700 leading-relaxed pl-2 md:pl-0 border-l-2 border-teal-100 md:border-0"
-                          dangerouslySetInnerHTML={{ __html: sec.text }}
-                        />
+                        <div className="flex-1 bg-stone-50 md:bg-transparent p-4 md:p-0 rounded-2xl md:rounded-none">
+                          <div 
+                            className="text-stone-800 text-base leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: sec.text }}
+                          />
+                          {(sec.transport || sec.transportTip) && (
+                            <div className="mt-3 flex flex-wrap items-center gap-2">
+                              {/* Mobile Transport Icon */}
+                              {sec.transport && (
+                                <div className="md:hidden flex items-center gap-1 text-[10px] font-bold uppercase py-1 px-2 bg-teal-100 text-teal-700 rounded-lg">
+                                  {sec.transport === 'taxi' && <Car className="w-3 h-3" />}
+                                  {sec.transport === 'subway' && <Train className="w-3 h-3" />}
+                                  {sec.transport === 'bus' && <Bus className="w-3 h-3" />}
+                                  {sec.transport === 'walk' && <Footprints className="w-3 h-3" />}
+                                  {sec.transport}
+                                </div>
+                              )}
+                              {sec.transportTip && (
+                                <div className="flex items-center gap-1.5 text-xs font-medium text-teal-600 bg-teal-50/50 py-1.5 px-3 rounded-xl border border-teal-100/50 italic">
+                                  <Info className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                                  <span>{sec.transportTip}</span>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     ))}
                   </div>

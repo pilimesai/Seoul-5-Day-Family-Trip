@@ -6,11 +6,36 @@ export const ITINERARY_DATA: DayData[] = [
     title: "豪華帝王蟹與弘大探索",
     highlights: "AREX、帝王蟹、人生四格",
     sections: [
-      { time: "11:00", text: "抵達仁川機場，搭乘<strong>AREX 普通車</strong> 往弘大入口站。" },
-      { time: "13:00", text: "午餐：波妞推薦 <strong>豚壽百豬肉湯飯</strong>（濃郁白湯，五歲小孩超愛，嚴禁牛羊者首選）。" },
-      { time: "15:00", text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹。" },
-      { time: "18:00", text: "弘大商圈詳細攻略：可參考紹紹推薦清單：<br/>- <strong>MMLG</strong>：在地知名街頭品牌。<br/>- <strong>What It Isnt</strong>：經典天使 Logo 潮流服飾。<br/>- <strong>Butter</strong>：生活雜貨選物店（小孩超愛）。<br/>- <strong>Lee / Fallett</strong>：休閒與設計感品牌。<br/>- <strong>Sigonggan</strong>：整面牆的耳環飾品天花板。<br/>- <strong>Common Unique</strong>：韓劇常見的甜美韓系穿搭。<br/>- <strong>Supernova</strong>：復古美式校園風服飾。<br/>- <strong>MUSINSA Standard</strong>：韓國版 Uniqlo，必買修身西裝褲。" },
-      { time: "20:30", text: "拍「人生四格」照片，留下珍貴家庭回憶。" }
+      { 
+        time: "11:00", 
+        text: "抵達仁川機場，搭乘<strong>AREX 普通車</strong> 往弘大入口站。",
+        transport: "subway",
+        transportTip: "AREX直達最省時，小孩入站半價。"
+      },
+      { 
+        time: "13:00", 
+        text: "午餐：波妞推薦 <strong>豚壽百豬肉湯飯</strong>（濃郁白湯，五歲小孩超愛，嚴禁牛羊者首選）。",
+        transport: "walk",
+        transportTip: "弘大站出口步行5分鐘內。"
+      },
+      { 
+        time: "15:00", 
+        text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹。",
+        transport: "taxi",
+        transportTip: "3人搭車比轉地鐵方便，且市場採買更省體力。"
+      },
+      { 
+        time: "18:00", 
+        text: "弘大商圈詳細攻略：可參考紹紹推薦清單：<br/>- <strong>MMLG</strong>：在地知名街頭品牌。<br/>- <strong>What It Isnt</strong>：經典天使 Logo 潮流服飾。<br/>- <strong>Butter</strong>：生活雜貨選物店（小孩超愛）。<br/>- <strong>Lee / Fallett</strong>：休閒與設計感品牌。<br/>- <strong>Sigonggan</strong>：整面牆的耳環飾品天花板。<br/>- <strong>Common Unique</strong>：韓劇常見的甜美韓系穿搭。<br/>- <strong>Supernova</strong>：復古美式校園風服飾。<br/>- <strong>MUSINSA Standard</strong>：韓國版 Uniqlo，必買修身西裝褲。",
+        transport: "taxi",
+        transportTip: "吃飽後建議直接坐計程車回弘大主戰場逛街。"
+      },
+      { 
+        time: "20:30", 
+        text: "拍「人生四格」照片，留下珍貴家庭回憶。",
+        transport: "walk",
+        transportTip: "弘大商圈內隨處可見，步行即可。"
+      }
     ]
   },
   {
@@ -18,10 +43,30 @@ export const ITINERARY_DATA: DayData[] = [
     title: "仁川一日團 (週五)",
     highlights: "極光秀、斜坡滑車、蒜味豬腳",
     sections: [
-      { time: "08:30", text: "弘大站集合。仁川一日遊啟程。" },
-      { time: "上午", text: "INSPIRE Resort 極光秀 & 斜坡滑車 (Luge) 小孩超愛！" },
-      { time: "下午", text: "永宗島鐵道自行車 (Rail Bike)，看海放鬆。" },
-      { time: "19:00", text: "晚餐：<strong>弘大豬腳小姐 (Myth Jokbal)</strong>，蒜味豬腳（純豬肉，避開牛羊）。" }
+      { 
+        time: "08:30", 
+        text: "弘大站集合。仁川一日遊啟程。",
+        transport: "walk",
+        transportTip: "弘大站內集合，從飯店步行即可。"
+      },
+      { 
+        time: "上午", 
+        text: "INSPIRE Resort 極光秀 & 斜坡滑車 (Luge) 小孩超愛！",
+        transport: "bus",
+        transportTip: "跟團巴士移動，最輕鬆。"
+      },
+      { 
+        time: "下午", 
+        text: "永宗島鐵道自行車 (Rail Bike)，看海放鬆。",
+        transport: "bus",
+        transportTip: "團體行程安排，無需擔心交通。"
+      },
+      { 
+        time: "19:00", 
+        text: "晚餐：<strong>弘大豬腳小姐 (Myth Jokbal)</strong>，蒜味豬腳（純豬肉，避開牛羊）。",
+        transport: "bus",
+        transportTip: "一日遊行程結束回弘大解散。"
+      }
     ]
   },
   {
@@ -29,11 +74,36 @@ export const ITINERARY_DATA: DayData[] = [
     title: "購物與手作 (週六)",
     highlights: "醫美、DIY、超市大掃貨",
     sections: [
-      { time: "10:00", text: "【分頭行動】👩 媽媽前往 Forena Clinic 醫美；👨 爸爸帶小孩去 Object 進行布章手作 DIY。" },
-      { time: "12:30", text: "午餐：風川鰻魚 (Pungcheon Jangeo) - 弘大名店，炭火現烤國產鰻魚（無牛羊）。" },
-      { time: "14:30", text: "昌信洞文具玩具批發市場：五歲男童的放電天堂。" },
-      { time: "16:30", text: "晚餐：<strong>天雞一隻雞 (新堂站)</strong>。提早吃免排隊（或可選安國站<strong>神仙豬排</strong>）。" },
-      { time: "19:00", text: "首爾站 Lotte Outlets (買 TNF 外套) ＆ 樂天超市買伴手禮。" }
+      { 
+        time: "10:00", 
+        text: "【分頭行動】👩 媽媽前往 Forena Clinic 醫美；👨 爸爸帶小孩去 Object 進行布章手作 DIY。",
+        transport: "walk",
+        transportTip: "皆在弘大商圈內，分頭進行很方便。"
+      },
+      { 
+        time: "12:30", 
+        text: "午餐：風川鰻魚 (Pungcheon Jangeo) - 弘大名店，炭火現烤國產鰻魚（無牛羊）。",
+        transport: "walk",
+        transportTip: "弘大區內步行完成集合與午餐。"
+      },
+      { 
+        time: "14:30", 
+        text: "昌信洞文具玩具批發市場：五歲男童的放電天堂。",
+        transport: "taxi",
+        transportTip: "從弘大到昌信洞，3人搭計程車比地鐵轉乘輕鬆許多。"
+      },
+      { 
+        time: "16:30", 
+        text: "晚餐：<strong>天雞一隻雞 (新堂站)</strong>。提早吃免排隊（或可選安國站<strong>神仙豬排</strong>）。",
+        transport: "taxi",
+        transportTip: "距離不遠，建議直接坐車節省體力。"
+      },
+      { 
+        time: "19:00", 
+        text: "首爾站 Lotte Outlets (買 TNF 外套) ＆ 樂天超市買伴手禮。",
+        transport: "taxi",
+        transportTip: "新堂到首爾站直達，買完伴手禮大包小包可直接坐車回飯店。"
+      }
     ]
   },
   {
@@ -41,10 +111,30 @@ export const ITINERARY_DATA: DayData[] = [
     title: "自然放電與聖水洞 (週日)",
     highlights: "首爾大公園、Dior、炸豬排",
     sections: [
-      { time: "09:30", text: "早餐：Egg Drop 爆餡吐司。" },
-      { time: "11:00", text: "<strong>首爾大公園</strong>：搭大象列車看動物。戶外放電時間。" },
-      { time: "15:00", text: "聖水洞探索：除了 Dior 與 Musinsa，可參考波妞推薦清單：<strong>Tamburins</strong> (香氛/護手霜)、<strong>Rockfish</strong> (雪靴/芭蕾舞鞋)、<strong>Point of View</strong> (質感文具)、<strong>Fwee Agit</strong> (果凍彩妝)；墨鏡必看 <strong>Blue Elephant</strong> (平價) 與 <strong>Gentle Monster</strong> (旗艦大店)；麵包控必排 <strong>自然島鹽可頌</strong> 或 <strong>Meal° 吐司</strong>；想吃杜拜巧克力可去 <strong>Rain Report</strong>。" },
-      { time: "18:00", text: "晚餐：聖水洞厚切炸豬排（小孩最愛）。" }
+      { 
+        time: "09:30", 
+        text: "早餐：Egg Drop 爆餡吐司。",
+        transport: "walk",
+        transportTip: "弘大站內早餐店，直接步行。"
+      },
+      { 
+        time: "11:00", 
+        text: "<strong>首爾大公園</strong>：搭大象列車看動物。戶外放電時間。",
+        transport: "subway",
+        transportTip: "4號線直達，不用擔心交通堵塞。"
+      },
+      { 
+        time: "15:00", 
+        text: "聖水洞探索：除了 Dior 與 Musinsa，可參考波妞推薦清單：<strong>Tamburins</strong> (香氛/護手霜)、<strong>Rockfish</strong> (雪靴/芭蕾舞鞋)、<strong>Point of View</strong> (質感文具)、<strong>Fwee Agit</strong> (果凍彩妝)；墨鏡必看 <strong>Blue Elephant</strong> (平價) 與 <strong>Gentle Monster</strong> (旗艦大店)；麵包控必排 <strong>自然島鹽可頌</strong> 或 <strong>Meal° 吐司</strong>；想吃杜拜巧克力可去 <strong>Rain Report</strong>。",
+        transport: "subway",
+        transportTip: "從大公園回聖水（2號線），搭乘地鐵較穩。"
+      },
+      { 
+        time: "18:00", 
+        text: "晚餐建議：<strong>光化門國밥 (聖水店)</strong>。米其林必比登推薦的豬肉湯飯，湯頭清甜無雜味，非常適合小孩與不喜油膩者。",
+        transport: "walk",
+        transportTip: "聖水洞內精華區，步行即可到達。"
+      }
     ]
   },
   {
@@ -52,9 +142,24 @@ export const ITINERARY_DATA: DayData[] = [
     title: "網美早午餐與賦歸",
     highlights: "溫室早午餐、整理戰利品",
     sections: [
-      { time: "10:00", text: "退房寄放行李。步行前往「Urban Plant」合井站植物系早午餐。" },
-      { time: "12:00", text: "弘大最後補貨（ABC Mart 買鞋或襪子）。" },
-      { time: "13:30", text: "搭乘 AREX 普通車前往機場。16:00 班機起飛。" }
+      { 
+        time: "10:00", 
+        text: "退房寄放行李。步行前往「Urban Plant」合井站植物系早午餐。",
+        transport: "walk",
+        transportTip: "飯店退房後漫步至合井（1站路距離）。"
+      },
+      { 
+        time: "12:00", 
+        text: "弘大最後補貨（ABC Mart 買鞋或襪子）。",
+        transport: "walk",
+        transportTip: "最後在商圈內晃晃。"
+      },
+      { 
+        time: "13:30", 
+        text: "搭乘 AREX 普通車前往機場。16:00 班機起飛。",
+        transport: "subway",
+        transportTip: "回程搭 AREX 最穩，推薦提早一點到機場逛免稅店。"
+      }
     ]
   }
 ];
@@ -99,6 +204,7 @@ export const MAP_LOCATIONS: MapGroup[] = [
       { name: "🥐 自然島鹽可頌 聖水", q: "Jayeondo Salt Bread Seongsu", naverQ: "자연도소금빵 성수" },
       { name: "🍞 Meal° (吐司/麵包) 聖水", q: "Meal Seoul Seongsu", naverQ: "밀도 성수본점" },
       { name: "🍫 Rain Report (杜拜巧克力)", q: "Rain Report Croissant Seongsu", naverQ: "레인리포트 크루아상" },
+      { name: "🍲 光化門國飯 (米其林豬肉湯飯)", q: "Gwanghwamun Gukbap Seongsu", naverQ: "광화문국밥 성수점" },
       { name: "🌿 Urban Plant 合井", q: "Urban Plant Hapjeong", naverQ: "어반플랜特 합정" }
     ]
   }
@@ -111,6 +217,7 @@ export const FOOD_DATA: FoodItem[] = [
   { name: "風川鰻魚", desc: "弘大必吃名店，炭火現烤國產鰻魚，外焦內嫩，無牛羊隱憂。", tag: "海鮮" },
   { name: "神仙豬排 (安國站)", desc: "安國站名店，厚實多汁的炸豬排，深受在地人與遊客喜愛。", tag: "豬肉" },
   { name: "厚切炸豬排", desc: "聖水洞名物，外酥內嫩，高品質豬肉料理。", tag: "豬肉" },
+  { name: "光化門國飯 (광화문국밥)", desc: "米其林必比登推薦名店（聖水分店）。以清澈如水的湯頭聞名，完全沒有豬腥味，口感高雅，適合全家大小。", tag: "豬肉" },
   { name: "🥐 自然島鹽可頌 (자연도소금빵)", desc: "聖水洞排隊神店！每日限量出爐，口感Q彈奶油香濃郁。建議提早去領取號碼牌。", tag: "麵包" },
   { name: "🍞 Meal° (밀도) 聖水店", desc: "以吐司聞名的小店，咖哩麵包與栗子吐司非常受歡迎。位在聖水洞入口處。", tag: "麵包" }
 ];

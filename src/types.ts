@@ -1,6 +1,8 @@
 export interface ItinerarySection {
   time: string;
   text: string;
+  transport?: 'taxi' | 'subway' | 'bus' | 'walk';
+  transportTip?: string;
 }
 
 export interface DayData {
