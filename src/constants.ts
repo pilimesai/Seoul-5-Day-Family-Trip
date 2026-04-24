@@ -18,8 +18,14 @@ export const ITINERARY_DATA: DayData[] = [
         transport: "walk",
         transportTip: "弘大站出口步行5分鐘內。"
       },
+      {
+        time: "14:30",
+        text: "前往住宿點辦理 Check-in 或寄放行李：<br/>🏠 <strong>Julie's Place</strong> (2手房型，弘大站步行1分鐘)。",
+        transport: "walk",
+        transportTip: "離弘大站超級近，就在商圈核心區。"
+      },
       { 
-        time: "15:00", 
+        time: "15:30", 
         text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹。",
         transport: "taxi",
         transportTip: "3人搭車比轉地鐵方便，且市場採買更省體力。"
@@ -168,6 +174,7 @@ export const MAP_LOCATIONS: MapGroup[] = [
   {
     day: "Day 1-2 弘大與周邊",
     locations: [
+      { name: "🏠 Julie's Place (我們的家)", q: "Hongik University Station Exit 3", naverQ: "홍대입구역 3번출구" },
       { name: "🦀 麻浦農水產市場 (3112攤位)", q: "Mapo Agricultural and Marine Products Market", naverQ: "마포농수산물시장" },
       { name: "🍖 豬腳小姐", q: "Myth Jokbal Hongdae", naverQ: "미쓰족발 홍대본점" },
       { name: "🍲 豚壽百 弘大直營店", q: "Donsubaek Hongdae", naverQ: "돈수백 홍대직영점" },
