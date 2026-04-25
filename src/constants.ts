@@ -32,7 +32,7 @@ export const ITINERARY_DATA: DayData[] = [
       },
       { 
         time: "18:00", 
-        text: "弘大商圈詳細攻略：可參考紹紹推薦清單：<br/>- <strong>MMLG</strong>：在地知名街頭品牌。<br/>- <strong>What It Isnt</strong>：經典天使 Logo 潮流服飾。<br/>- <strong>Butter</strong>：生活雜貨選物店（小孩超愛）。<br/>- <strong>Lee / Fallett</strong>：休閒與設計感品牌。<br/>- <strong>Sigonggan</strong>：整面牆的耳環飾品天花板。<br/>- <strong>Common Unique</strong>：韓劇常見的甜美韓系穿搭。<br/>- <strong>Supernova</strong>：復古美式校園風服飾。<br/>- <strong>MUSINSA Standard</strong>：韓國版 Uniqlo，必買修身西裝褲。",
+        text: "弘大商圈詳細攻略（結合紹紹 & 篠崎泫推薦）：<br/>- <strong>MMLG</strong>：在地知名街頭品牌。<br/>- <strong>What It Isnt</strong>：經典天使 Logo 潮流服飾。<br/>- <strong>Butter</strong>：生活雜貨選物店（小孩超愛）。<br/>- <strong>Lee / Fallett</strong>：休閒與設計感品牌。<br/>- <strong>Sigonggan</strong>：整面牆的耳環飾品天花板。<br/>- <strong>Common Unique</strong>：韓劇常見的甜美韓系穿搭。<br/>- <strong>Supernova</strong>：復古美式校園風服飾。<br/>- <strong>MUSINSA Standard</strong>：韓國版 Uniqlo，必買修身西裝褲。<br/>- <strong>Marithe / emis</strong>：今年最火紅的品牌，弘大旗艦店非常齊全。",
         transport: "taxi",
         transportTip: "吃飽後建議直接坐計程車回弘大主戰場逛街。"
       },
@@ -121,7 +121,7 @@ export const ITINERARY_DATA: DayData[] = [
         time: "09:30", 
         text: "早餐：Egg Drop 爆餡吐司。",
         transport: "walk",
-        transportTip: "弘大站內早餐店，直接步行。"
+        transportTip: "弘大站內 breakfast 餐廳，直接步行。"
       },
       { 
         time: "11:00", 
@@ -131,7 +131,7 @@ export const ITINERARY_DATA: DayData[] = [
       },
       { 
         time: "15:00", 
-        text: "聖水洞探索：除了 Dior 與 Musinsa，可參考波妞推薦清單：<strong>Tamburins</strong> (香氛/護手霜)、<strong>Rockfish</strong> (雪靴/芭蕾舞鞋)、<strong>Point of View</strong> (質感文具)、<strong>Fwee Agit</strong> (果凍彩妝)；墨鏡必看 <strong>Blue Elephant</strong> (平價) 與 <strong>Gentle Monster</strong> (旗艦大店)；麵包控必排 <strong>自然島鹽可頌</strong> 或 <strong>Meal° 吐司</strong>；想吃杜拜巧克力可去 <strong>Rain Report</strong>。",
+        text: "聖水洞深度探索（阿圓/紹紹/篠崎泫推薦）：<br/>- <strong>TAMBURINS</strong>：Jennie 愛用，必買蛋形護手霜與香氛蠟燭。<br/>- <strong>Rockfish Weatherwear</strong>：爆紅美鞋品牌，瑪莉珍鞋與芭蕾舞鞋必試。<br/>- <strong>fwee Agit</strong>：火熱「布丁唇頰泥」，聖水店可盡情試色。<br/>- <strong>Matin Kim</strong>：個性金屬鐵牌包、錢包，韓風潮流指標。<br/>- <strong>Stand Oil</strong>：簡約質感女包，Clam Bag 經典必看。<br/>- <strong>墨鏡三劍客</strong>：平價 <strong>Blue Elephant</strong>、前衛 <strong>Double Lovers</strong>、王者 <strong>Gentle Monster</strong>。<br/>- <strong>Point of View</strong>：質感文具天花板，文具控必逛。<br/>- <strong>美食地圖</strong>：排隊神店「自然島鹽可頌」、咖啡名店「Cafe Onion」、想吃杜拜巧克力必去「Rain Report」。",
         transport: "subway",
         transportTip: "從大公園回聖水（2號線），搭乘地鐵較穩。"
       },
@@ -202,18 +202,244 @@ export const MAP_LOCATIONS: MapGroup[] = [
     locations: [
       { name: "🐘 首爾大公園", q: "Seoul Grand Park", naverQ: "서울대공원" },
       { name: "☕ Cafe Onion 聖水", q: "Cafe Onion Seongsu", naverQ: "어니언 성수" },
-      { name: "🛍️ Rockfish (雪靴/芭蕾舞鞋)", q: "Rockfish Weatherwear Seongsu", naverQ: "락피쉬웨더웨어 성수" },
-      { name: "💄 Fwee Agit (腮紅/彩妝)", q: "Fwee Agit Seongsu", naverQ: "퓌 아지트 성수" },
+      { name: "🛍️ Rockfish (流行美鞋)", q: "Rockfish Weatherwear Seongsu", naverQ: "락피쉬웨더웨어 성수" },
+      { name: "💄 Fwee Agit (火熱彩妝)", q: "Fwee Agit Seongsu", naverQ: "퓌 アジト 성수" },
       { name: "✒️ Point of View (文具選物)", q: "Point of View Seoul", naverQ: "포인트오브뷰" },
       { name: "🕶️ Blue Elephant (平價墨鏡)", q: "Blue Elephant Seongsu", naverQ: "블루엘리펀트 성수" },
-      { name: "🕶️ Gentle Monster (高端墨鏡)", q: "Gentle Monster Seongsu Flagship", naverQ: "젠틀몬스터 성수 플래그십스토어" },
-      { name: "🕶️ Fake Me (潮流眼鏡)", q: "Fake Me Seongsu", naverQ: "페이크미 성수" },
-      { name: "🥐 自然島鹽可頌 聖水", q: "Jayeondo Salt Bread Seongsu", naverQ: "자연도소금빵 성수" },
-      { name: "🍞 Meal° (吐司/麵包) 聖水", q: "Meal Seoul Seongsu", naverQ: "밀도 성수본점" },
-      { name: "🍫 Rain Report (杜拜巧克力)", q: "Rain Report Croissant Seongsu", naverQ: "레인리포트 크루아상" },
+      { name: "🕶️ Double Lovers (設計師墨鏡)", q: "Double Lovers Seongsu", naverQ: "더블러버스" },
       { name: "🍲 光化門國飯 (米其林豬肉湯飯)", q: "Gwanghwamun Gukbap Seongsu", naverQ: "광화문국밥 성수점" },
-      { name: "🌿 Urban Plant 合井", q: "Urban Plant Hapjeong", naverQ: "어반플랜特 합정" }
+      { name: "🌿 Urban Plant 合井", q: "Urban Plant Hapjeong", naverQ: "어반플랜트 合정" }
     ]
+  }
+];
+
+export const SHOPPING_DATA: ShoppingItem[] = [
+  /* --- 專業藥局 購物清單 (藥膏類) --- */
+  { 
+    name: "Acnon 痘痘藥膏", 
+    nameKr: "애크논 크림",
+    loc: "各大藥局", 
+    desc: "針對紅腫大痘非常有效（紅管）。韓國國民級抗痘產品。",
+    recommender: "篠崎泫"
+  },
+  { 
+    name: "Noscarna 去疤膏", 
+    nameKr: "노스카나 겔",
+    loc: "各大藥局", 
+    desc: "韓國國民級去疤產品，針對新生疤痕效果顯著。",
+    recommender: "篠崎泫"
+  },
+  { 
+    name: "Aclean 水楊酸凝膠", 
+    nameKr: "애클린 겔",
+    loc: "各大藥局", 
+    desc: "針對閉口粉刺與黑頭，含水楊酸成分，溫和代謝。",
+    recommender: "篠崎泫"
+  },
+  { 
+    name: "MelaToning Cream", 
+    nameKr: "멜라토닝 크림",
+    loc: "各大藥局", 
+    desc: "淡斑神器，針對黑色素沉澱、雀斑有良好改善效果。",
+    recommender: "篠崎泫"
+  },
+  { 
+    name: "MARSHIQUE 頸紋貼", 
+    nameKr: "마르시끄 넥패치",
+    loc: "Olive Young", 
+    desc: "近期爆紅的局部抗皺貼，睡前貼於頸部。",
+    recommender: "篠崎泫"
+  },
+  /* --- Olive Young 購物清單 (阿圓 & 篠崎泫 推薦) --- */
+  {
+    name: "BioHeal BOH 膠原蛋白除皺貼",
+    nameKr: "프로바이오덤 T3 콜라겐 패치",
+    loc: "Olive Young",
+    desc: "【特殊護理】針對抬頭紋、法令紋與瘦臉設計，貼著睡覺效果顯著。",
+    recommender: "篠崎泫 / 阿圓"
+  },
+  {
+    name: "UNOVE 深層修護髮膜",
+    nameKr: "어노브 딥 데미지 트리트먼트",
+    loc: "Olive Young",
+    desc: "【美髮護理】國民級髮膜，針對受損髮質修復力極強，味道高級。",
+    recommender: "阿圓"
+  },
+  {
+    name: "ilso 溫和去黑頭鼻貼",
+    nameKr: "일소 네추럴 마일드 클리어 코팩",
+    loc: "Olive Young",
+    desc: "【特殊護理】不傷毛孔的去黑頭神器，敷完導出黑頭再刮除，效果驚人。",
+    recommender: "阿圓"
+  },
+  {
+    name: "Torriden 低分子玻尿酸精華",
+    nameKr: "토리든 다이브인 세럼",
+    loc: "Olive Young",
+    desc: "【基礎保養】長期佔據榜單第一，補水首選。",
+    recommender: "阿圓"
+  },
+  {
+    name: "UIQ Biome Barrier 精華噴霧",
+    nameKr: "유아이큐 바이옴 베리어 에센스 미스트",
+    loc: "Olive Young / 專賣店",
+    desc: "【精華噴霧】篠崎泫女神級推薦！修復肌膚屏障，噴霧極細，妝前妝後都能用。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Piccasso 專業化妝刮刀",
+    nameKr: "피카소 메이크업 스파츌라",
+    loc: "Olive Young / 弘大旗艦店",
+    desc: "【化妝神器】篠崎泫化妝必備！能將粉底液推得極薄、平滑，打造輕薄韓系底妝。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Rejuran 麗珠蘭 術後修復面膜",
+    nameKr: "리쥬란 힐러 마스크",
+    loc: "Olive Young / 醫美門市",
+    desc: "【強效修復】針對醫美後或極乾燥肌膚，修復力奇佳，也是篠崎泫的愛用品。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "d'Alba 黛爾珀 白松露精華噴霧",
+    nameKr: "달바 화이트 트러플 미스트 세럼",
+    loc: "Olive Young",
+    desc: "【空姐噴霧】洗臉後第一道手續或補妝時使用，增加肌膚光澤感。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Medicube Zero 毛孔收縮填充棉片",
+    nameKr: "메디큐브 제로 모공 패드",
+    loc: "Olive Young",
+    desc: "【毛孔護理】溫和去角質並收縮毛孔，每天早晚清潔後擦拭。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Mediheal 棉片 (積雪草/茶樹)",
+    nameKr: "메디힐 패드",
+    loc: "Olive Young",
+    desc: "【速效舒緩】針對不同膚況選擇，積雪草適合鎮靜，茶樹適合控油。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Round Lab 白樺樹水分防曬霜",
+    nameKr: "라운드랩 자작나무 수분 선크림",
+    loc: "Olive Young",
+    desc: "【防曬冠軍】清爽不厚重，像水乳液一樣好推開，補水效果好。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Aestura Atobarrier 365 舒緩乳霜",
+    nameKr: "에스트라 아토베리어365 크림",
+    loc: "Olive Young",
+    desc: "【高強修復】內含顆粒狀神經醯胺，深層鎖水，適合敏感肌與乾皮。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Delight Project 貝果餅乾",
+    nameKr: "딜라이트 프로젝트 베이글칩",
+    loc: "Olive Young",
+    desc: "【健康零食】回購率 100% 的低卡零食，蜂蜜奶油味必帶。",
+    recommender: "阿圓"
+  },
+  /* --- 聖水/弘大/漢南 購物清單 (紹紹 & 篠崎泫 推薦) --- */
+  {
+    name: "Marithe Francois Girbaud",
+    nameKr: "마리떼 프랑소와 저버",
+    loc: "聖水洞旗艦店 / 弘大 / 漢南洞",
+    desc: "【潮牌服飾 / 帽子】標誌性手寫 logo T-shirt、帆布包、貝雷帽。經典 Logo 系列非常修身且百搭。",
+    recommender: "紹紹 / 篠崎泫"
+  },
+  {
+    name: "Matin Kim",
+    nameKr: "마틴킴",
+    loc: "聖水洞旗艦店",
+    desc: "【潮牌服飾 / 皮件】最火的金屬鐵牌包與錢包，抽繩包也是代購大熱門，展現冷淡系韓風。",
+    recommender: "紹紹 / 篠崎泫"
+  },
+  {
+    name: "emis",
+    nameKr: "이미스",
+    loc: "聖水洞 / 漢南洞",
+    desc: "【帽子 / 質感包包】以 Waffle Cap 棒球帽與特色花紋包包聞名，韓星私服最愛指標品牌。",
+    recommender: "紹紹 / 篠崎泫"
+  },
+  {
+    name: "Stand Oil",
+    nameKr: "스탠드오일",
+    loc: "聖水洞旗艦店",
+    desc: "【質感女包】簡約韓系設計、皮質柔軟，Clam Bag 是經典必掃款。聖水店裝潢極具藝術感。",
+    recommender: "紹紹 / 篠崎泫"
+  },
+  {
+    name: "Rockfish Weatherwear",
+    nameKr: "락피쉬웨더웨어",
+    loc: "聖水洞 / 漢南洞",
+    desc: "【流行美鞋 / 雨靴】除了經典雨靴，近期大熱的是瑪莉珍鞋與芭蕾舞鞋。輕盈且修飾腳型。",
+    recommender: "紹紹 / 篠崎泫"
+  },
+  {
+    name: "fwee Agit",
+    nameKr: "퓌 아지트",
+    loc: "聖水洞旗艦店 / 弘大",
+    desc: "【火熱彩妝 / 腮紅】爆紅「布丁唇頰泥」，質地絲滑，可以同時當腮紅與唇彩使用。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Double Lovers",
+    nameKr: "더블러버스",
+    loc: "聖水洞",
+    desc: "【設計師墨鏡】篠崎泫強烈推薦！款式前衛、視覺衝擊力強，修飾臉型神物。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "ept (East Pacific Trade)",
+    nameKr: "이피티",
+    loc: "聖水洞旗艦店",
+    desc: "【潮流運動鞋 / 德訓鞋】韓國時髦人腳一雙的 Court 板鞋或德訓鞋，腳感舒適且視覺比例極佳。",
+    recommender: "紹紹"
+  },
+  {
+    name: "empty seoul",
+    nameKr: "엠프티",
+    loc: "聖水洞",
+    desc: "【大咖選物店 / 服飾】佔地極大的工業風選物店，包含各國獨立設計師品牌。",
+    recommender: "紹紹"
+  },
+  {
+    name: "Blue Elephant",
+    nameKr: "블루엘리펀트",
+    loc: "聖水洞",
+    desc: "【平價墨鏡】Gentle Monster 的最強平替，設計感極強且價格親民。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "Gentle Monster",
+    nameKr: "젠틀몬스터",
+    loc: "聖水洞旗艦店 / 弘大 / 漢南洞",
+    desc: "【精品級墨鏡】韓國墨鏡界的王者。聖水店的實驗性裝潢是必拍打打卡點。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "CARIN",
+    nameKr: "카린",
+    loc: "聖水洞 SHOWROOM / 弘大",
+    desc: "【氣質墨鏡 / 光學眼鏡】NewJeans 代言品牌。簡約風格、氣質優雅，適合長時間佩戴。",
+    recommender: "篠崎泫"
+  },
+  {
+    name: "TAMBURINS",
+    nameKr: "탬버린즈",
+    loc: "聖水洞旗艦店 / 漢南洞",
+    desc: "【香氛 / 護手霜】Jennie 愛用品牌。蛋形護手霜、香氛蠟燭與固體香水是必買，旗艦店非常有藝術氣息。",
+    recommender: "紹紹 / 篠崎泫 / 阿圓"
+  },
+  {
+    name: "hince",
+    nameKr: "힌스",
+    loc: "聖水洞旗艦店 / 漢南洞",
+    desc: "【質感彩妝】氛圍感十足的彩妝品牌。推薦第二層肌膚粉底液與單色眼影，包裝設計極具現代感。",
+    recommender: "篠崎泫"
   }
 ];
 
@@ -224,121 +450,9 @@ export const FOOD_DATA: FoodItem[] = [
   { name: "風川鰻魚", desc: "弘大必吃名店，炭火現烤國產鰻魚，外焦內嫩，無牛羊隱憂。", tag: "海鮮" },
   { name: "神仙豬排 (安國站)", desc: "安國站名店，厚實多汁的炸豬排，深受在地人與遊客喜愛。", tag: "豬肉" },
   { name: "厚切炸豬排", desc: "聖水洞名物，外酥內嫩，高品質豬肉料理。", tag: "豬肉" },
-  { name: "光化門國飯 (광화문국밥)", desc: "米其林必比登推薦名店（聖水分店）。以清澈如水的湯頭聞名，完全沒有豬腥味，口感高雅，適合全家大小。", tag: "豬肉" },
-  { name: "🥐 自然島鹽可頌 (자연도소금빵)", desc: "聖水洞排隊神店！每日限量出爐，口感Q彈奶油香濃郁。建議提早去領取號碼牌。", tag: "麵包" },
-  { name: "🍞 Meal° (밀도) 聖水店", desc: "以吐司聞名的小店，咖哩麵包與栗子吐司非常受歡迎。位在聖水洞入口處。", tag: "麵包" }
-];
-
-export const SHOPPING_DATA: ShoppingItem[] = [
-  { 
-    name: "Acnon 痘痘藥膏", 
-    nameKr: "애크논 크림",
-    loc: "各大藥局", 
-    desc: "針對紅腫大痘非常有效（紅管）。韓國國民級抗痘產品。"
-  },
-  { 
-    name: "Noscarna 去疤膏", 
-    nameKr: "노스카나 겔",
-    loc: "各大藥局", 
-    desc: "韓國國民級去疤產品，針對新生疤痕效果顯著。"
-  },
-  { 
-    name: "Aclean 水楊酸凝膠", 
-    nameKr: "애클린 겔",
-    loc: "各大藥局", 
-    desc: "針對閉口粉刺與黑頭，含水楊酸成分，溫和代謝。"
-  },
-  { 
-    name: "MelaToning Cream", 
-    nameKr: "멜라토닝 크림",
-    loc: "各大藥局", 
-    desc: "淡斑神器，針對黑色素沉澱、雀斑有良好改善效果。"
-  },
-  { 
-    name: "Handok 痘痘水 (Clearteen)", 
-    nameKr: "클리어틴",
-    loc: "各大藥局", 
-    desc: "液態設計，方便大面積塗抹於背部 or 臉部粉刺區。"
-  },
-  { 
-    name: "Dongkook Elina C 維他命 C", 
-    nameKr: "엘리나 씨",
-    loc: "各大藥局 / Olive Young", 
-    desc: "高濃度維他命C粉，BLACKPINK 同款，口感好吸收快。"
-  },
-  { 
-    name: "jw 葡萄糖眼藥水", 
-    nameKr: "jw 포도당 점안액",
-    loc: "各大藥局", 
-    desc: "緩解眼睛疲勞，提供營養，適合長時間用眼者。"
-  },
-  { 
-    name: "YouGreen F 腳後跟護理膏", 
-    nameKr: "유그린 에프 연고",
-    loc: "各大藥局", 
-    desc: "針對腳跟龜裂、粗糙有神效，滋潤度極高。"
-  },
-  { 
-    name: "MARSHIQUE 頸紋貼", 
-    nameKr: "마르시끄 넥패치",
-    loc: "Olive Young", 
-    desc: "近期爆紅的局部抗皺貼，睡前貼於頸部。"
-  },
-  { 
-    name: "企鵝痠痛乳液 (Antiphlamine)", 
-    nameKr: "안티푸라민 롤파스",
-    loc: "各大藥局", 
-    desc: "孫興慜代言，滾珠頭設計不沾手，緩解肌肉痠痛。"
-  },
-  { 
-    name: "Bentpla 舒緩凝膠", 
-    nameKr: "벤트플라 겔",
-    loc: "各大藥局", 
-    desc: "針對瘀青、腫脹有快速舒緩效果，旅行必備。"
-  },
-  { 
-    name: "CellMed 修護霜", 
-    nameKr: "셀메드 리페어 크림",
-    loc: "各大藥局", 
-    desc: "強效修護受損肌膚，醫美術後亦可使用。"
-  },
-  /* --- Olive Young 必買清單 (阿圓推薦 & Threads 熱門) --- */
-  {
-    name: "BioHeal BOH 膠原蛋白除皺貼",
-    nameKr: "프로바이오덤 T3 콜라겐 패치",
-    loc: "Olive Young",
-    desc: "【特殊護理】影片強烈推薦！針對抬頭紋、法令紋與瘦臉設計，貼著睡覺效果顯著。"
-  },
-  {
-    name: "fwee 布丁唇頰泥",
-    nameKr: "fwee 푸딩팟",
-    loc: "Olive Young / 弘大旗艦店",
-    desc: "【流行彩妝】Threads 爆紅款！質地如布丁般絲滑，唇頰兩用，顏色極美。"
-  },
-  {
-    name: "UNOVE 深層修護髮膜",
-    nameKr: "어노브 딥 데미지 트리트먼트",
-    loc: "Olive Young",
-    desc: "【美髮護理】國民級髮膜，針對受損髮質修復力極強，味道高級。"
-  },
-  {
-    name: "ilso 溫和去黑頭鼻貼",
-    nameKr: "일소 네추럴 마일드 클리어 코팩",
-    loc: "Olive Young",
-    desc: "【特殊護理】不傷毛孔的去黑頭神器，敷完導出黑頭再刮除，效果驚人。"
-  },
-  {
-    name: "Torriden 低分子玻尿酸精華",
-    nameKr: "토리든 다이브인 세럼",
-    loc: "Olive Young",
-    desc: "【基礎保養】長期佔據榜單第一，補水首選。"
-  },
-  {
-    name: "Delight Project 貝果餅乾",
-    nameKr: "딜라이트 프로젝트 베이글칩",
-    loc: "Olive Young",
-    desc: "【健康零食】回購率 100% 的低卡零食，蜂蜜奶油味必帶。"
-  }
+  { name: "光化門國飯 (광화문국밥)", desc: "米其林必比登推薦名店（聖水分店）。清澈湯頭，無豬腥味，適合全家。", tag: "豬肉" },
+  { name: "🥐 自然島鹽可頌 (자연도소금빵)", desc: "聖水洞排隊神店！每日限量出爐，口感Q彈奶油香濃郁。", tag: "麵包" },
+  { name: "🍞 Meal° (밀도) 聖水店", desc: "以吐司聞名的小店，咖哩麵包與栗子吐司非常受歡迎。", tag: "麵包" }
 ];
 
 export const COUPON_DATA: CouponItem[] = [
@@ -346,7 +460,7 @@ export const COUPON_DATA: CouponItem[] = [
     brand: "SPAO",
     title: "SPAO 弘大店 九折優惠券",
     subtitle: "Klook 獨家優惠",
-    desc: "出示憑證即可享有九折優惠。憑證號：KLK8176732787，訂單號：WFY135546。",
+    desc: "出示憑證即可享有九折優惠。憑證號：KLK8176732787。",
     code: "KLK8176732787",
     image: "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=KLK8176732787"
   },
@@ -354,7 +468,7 @@ export const COUPON_DATA: CouponItem[] = [
     brand: "Lotte Mart",
     title: "Lotte Mart KRW 6,000 折扣券",
     subtitle: "KKday 獨家行動現金券",
-    desc: "滿 KRW 100,000 可折抵 KRW 6,000。韓國的臺灣旅客專屬優惠。",
+    desc: "滿 KRW 100,000 可折抵 KRW 6,000。",
     barcode: "9 119200 000237",
     validity: "2026.02.23 ~ 08.31",
     color: "#46C1CE"
@@ -363,20 +477,20 @@ export const COUPON_DATA: CouponItem[] = [
     brand: "Lotte",
     title: "樂天觀光會員卡 (Lotte Tourist Card)",
     subtitle: "護照免費辦理 ‧ 購物交通二合一",
-    desc: "於樂天百貨明洞總店 1F Tax Refund Lounge 持護照免費辦理。享百貨 95 折、免稅店/7-11 9 折、超市 93 折。可當交通卡使用並累積 L.POINT。",
+    desc: "於樂天百貨明洞總店 1F 免費辦理。享百貨95折、免稅店/7-11 9折、超市93折。",
     color: "#E30613"
   },
   {
     brand: "Lotte Duty Free",
     title: "樂天線上免稅店 (APP 購物)",
     subtitle: "線上購買 ‧ 機場取貨 ‧ 價格最優",
-    desc: "推薦下載 APP 線上購買，比實體店更便宜。可搭配 EXIM Pay+ 付款。OLENS、隱形眼鏡、香水價差極大。出境前於機場 T1/T2 指定櫃檯領取，不佔行李重量。",
+    desc: "推薦下載 APP 線上購買，比實體店更便宜。OLENS、隱形眼鏡價差大。",
     color: "#D4AF37"
   }
 ];
 
-export const SHOPPING_SOURCE = "備註：以上藥妝資訊參考自 Funliday 〈2026韓國藥局必買｜16款推薦清單〉";
-export const SHOPPING_URL = "https://www.funliday.com/posts/korea-pharmacy-must-buy/";
+export const SHOPPING_SOURCE = "備註：以上資訊參考自 YouTube 頻道《紹紹 Shao Shao》、《一隻阿圓》與《篠崎泫 Hsiao-chi Hsuan》2024 完整逛街懶人包";
+export const SHOPPING_URL = "https://www.youtube.com/watch?v=eqzATbg_1_g";
 
 export const ANALYTICS_DATA = [
   { name: '購物補貨', value: 35, color: '#fb7185' },

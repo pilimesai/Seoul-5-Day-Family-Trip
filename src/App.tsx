@@ -113,7 +113,7 @@ export default function App() {
             onClick={() => setActiveTab('shopping')}
             icon={<ShoppingBag className="w-4 h-4" />}
           >
-            必買藥妝
+            購物清單
           </TabButton>
           <TabButton 
             active={activeTab === 'coupons'} 
@@ -349,7 +349,7 @@ export default function App() {
                   <div className="p-2 bg-rose-100 rounded-lg text-rose-600">
                     <Pill className="w-6 h-6" />
                   </div>
-                  <h2 className="text-2xl font-black text-stone-800 tracking-tight">專業藥局必買 <span className="text-sm font-medium text-stone-400 ml-2">Pharmacy Only</span></h2>
+                  <h2 className="text-2xl font-black text-stone-800 tracking-tight">藥局 購物清單 <span className="text-sm font-medium text-stone-400 ml-2">Pharmacy List</span></h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {SHOPPING_DATA.filter(item => item.loc.includes('藥局')).map((item, idx) => (
@@ -364,10 +364,27 @@ export default function App() {
                   <div className="p-2 bg-green-100 rounded-lg text-green-700">
                     <ShoppingBag className="w-6 h-6" />
                   </div>
-                  <h2 className="text-2xl font-black text-stone-800 tracking-tight">Olive Young 必買 <span className="text-sm font-medium text-stone-400 ml-2">Beauty & Life</span></h2>
+                  <h2 className="text-2xl font-black text-stone-800 tracking-tight">Olive Young 購物清單 <span className="text-sm font-medium text-stone-400 ml-2">Beauty & Life</span></h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {SHOPPING_DATA.filter(item => item.loc.includes('Olive Young')).map((item, idx) => (
+                    <ShoppingCard key={idx} item={item} type="olive" />
+                  ))}
+                </div>
+              </div>
+
+              {/* Featured Brands Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-teal-200">
+                  <div className="p-2 bg-teal-100 rounded-lg text-teal-600">
+                    <ShoppingBag className="w-6 h-6" />
+                  </div>
+                  <h2 className="text-2xl font-black text-stone-800 tracking-tight">精選品牌 購物清單 <span className="text-sm font-medium text-stone-400 ml-2">Fashion & Trends</span></h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {SHOPPING_DATA.filter(item => 
+                    !item.loc.includes('藥局') && !item.loc.includes('Olive Young')
+                  ).map((item, idx) => (
                     <ShoppingCard key={idx} item={item} type="olive" />
                   ))}
                 </div>
@@ -568,7 +585,13 @@ function ShoppingCard({ item, type }: { item: ShoppingItem, type: 'pharmacy' | '
           )}>
             {item.loc}
           </p>
-          <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+          <p className="text-stone-600 text-sm leading-relaxed mb-3">{item.desc}</p>
+          {item.recommender && (
+            <div className="flex items-center gap-1.5 text-xs font-bold py-1 px-2 bg-stone-100 text-stone-500 rounded-md mb-2">
+              <Users className="w-3.5 h-3.5" />
+              <span>推薦者: {item.recommender}</span>
+            </div>
+          )}
           {item.image && (
             <div className={cn(
               "mt-3 rounded-lg overflow-hidden border border-stone-200",

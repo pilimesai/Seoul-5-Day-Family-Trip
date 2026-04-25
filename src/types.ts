@@ -36,6 +36,7 @@ export interface ShoppingItem {
   desc: string;
   code?: string;
   image?: string;
+  recommender?: string;
 }
 
 export interface CouponItem {
