@@ -32,7 +32,7 @@ import { PieChart as RePieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { ShoppingItem } from './types';
-import { ITINERARY_DATA, MAP_LOCATIONS, FOOD_DATA, SHOPPING_DATA, ANALYTICS_DATA, SHOPPING_SOURCE, SHOPPING_URL, COUPON_DATA } from './constants';
+import { ITINERARY_DATA, MAP_LOCATIONS, FOOD_DATA, SHOPPING_DATA, ANALYTICS_DATA, SHOPPING_SOURCE, SHOPPING_URL, COUPON_DATA, TRANSPORT_COMPARISON } from './constants';
 
 /**
  * Utility for merging tailwind classes
@@ -41,7 +41,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-type TabType = 'itinerary' | 'map' | 'food' | 'shopping' | 'coupons' | 'analytics';
+type TabType = 'itinerary' | 'map' | 'food' | 'shopping' | 'coupons' | 'analytics' | 'transport';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('itinerary');
@@ -128,6 +128,13 @@ export default function App() {
             icon={<PieChart className="w-4 h-4" />}
           >
             行程分析
+          </TabButton>
+          <TabButton 
+            active={activeTab === 'transport'} 
+            onClick={() => setActiveTab('transport')}
+            icon={<TrainFront className="w-4 h-4" />}
+          >
+            交通比價
           </TabButton>
         </div>
       </nav>
@@ -549,6 +556,89 @@ export default function App() {
               </p>
             </motion.section>
           )}
+
+          {activeTab === 'transport' && (
+            <motion.section 
+              key="transport"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="space-y-6"
+            >
+              <div className="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                <div className="bg-teal-600 p-4 text-white">
+                  <h2 className="text-xl font-bold flex items-center gap-2">
+                    <TrainFront className="w-6 h-6" />
+                    仁川機場 ⇄ 弘大：交通比價
+                  </h2>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-sm">
+                    <thead>
+                      <tr className="bg-stone-50 border-b border-stone-200">
+                        <th className="p-4 font-bold text-stone-600">交通工具</th>
+                        <th className="p-4 font-bold text-stone-600">單人價格</th>
+                        <th className="p-4 font-bold text-stone-600">3人總價</th>
+                        <th className="p-4 font-bold text-stone-600">時間</th>
+                        <th className="p-4 font-bold text-stone-600">優點</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {TRANSPORT_COMPARISON.map((item, idx) => (
+                        <tr key={idx} className="border-b border-stone-100 hover:bg-stone-50/50 transition">
+                          <td className="p-4">
+                            <div className="font-bold text-stone-900">{item.mode}</div>
+                            <div className="text-[10px] text-teal-600 font-bold uppercase tracking-tighter mt-1">推薦：{item.recommend}</div>
+                          </td>
+                          <td className="p-4 text-stone-600">{item.priceText}</td>
+                          <td className="p-4">
+                            <span className="font-mono font-bold text-rose-600">約 {item.totalPrice.toLocaleString()} KRW</span>
+                          </td>
+                          <td className="p-4 text-stone-500 font-medium">{item.time}</td>
+                          <td className="p-4">
+                            <div className="text-stone-700 font-medium mb-1 flex items-center gap-1">
+                              <BadgeSmall color="green">優</BadgeSmall> {item.pros}
+                            </div>
+                            <div className="text-stone-400 text-xs flex items-center gap-1">
+                              <BadgeSmall color="gray">缺</BadgeSmall> {item.cons}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-blue-50 border border-blue-100 p-5 rounded-2xl">
+                  <h3 className="font-bold text-blue-800 mb-3 flex items-center gap-2 text-base">
+                    <Lightbulb className="w-5 h-5 text-blue-500" />
+                    在地小撇步
+                  </h3>
+                  <ul className="space-y-2 text-sm text-blue-900/80">
+                    <li className="flex gap-2">
+                      <span className="shrink-0">•</span>
+                      <span><strong>T-money 小孩卡：</strong> 5-12 歲小孩可購買小孩卡，乘車半價，可在便利商店或機場服務台憑護照設定。</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="shrink-0">•</span>
+                      <span><strong>計程車 APP：</strong> 如果要搭計程車，推薦下載 <strong>Kakao Taxi</strong> 可預估車資且減少溝通難度。</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-rose-50 border border-rose-100 p-5 rounded-2xl">
+                  <h3 className="font-bold text-rose-800 mb-3 flex items-center gap-2 text-base">
+                    <Info className="w-5 h-5 text-rose-500" />
+                    給您的建議
+                  </h3>
+                  <p className="text-sm text-rose-900/80 leading-relaxed">
+                    您的行程中有「3位成人+1位5歲小孩」，且攜帶購物戰利品。<b>回程</b>強烈建議預約<b>機場接送 (Private car)</b>，除了省去拖重行李轉車的痛苦，分擔下來每人僅需約 2 萬多韓幣，性價比極高！
+                  </p>
+                </div>
+              </div>
+            </motion.section>
+          )}
         </AnimatePresence>
       </main>
 
@@ -614,6 +704,18 @@ function ShoppingCard({ item, type }: { item: ShoppingItem, type: 'pharmacy' | '
         </div>
       </div>
     </div>
+  );
+}
+
+function BadgeSmall({ children, color }: { children: React.ReactNode, color: 'green' | 'gray' }) {
+  const colors = {
+    green: "bg-green-100 text-green-700",
+    gray: "bg-stone-100 text-stone-500"
+  };
+  return (
+    <span className={cn("text-[10px] px-1 rounded font-black uppercase", colors[color])}>
+      {children}
+    </span>
   );
 }
 

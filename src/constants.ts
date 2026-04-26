@@ -4,13 +4,13 @@ export const ITINERARY_DATA: DayData[] = [
   {
     day: 1,
     title: "豪華帝王蟹與弘大探索",
-    highlights: "AREX、帝王蟹、人生四格",
+    highlights: "機場接送、帝王蟹、人生四格",
     sections: [
       { 
         time: "11:00", 
-        text: "抵達仁川機場，搭乘<strong>AREX 普通車</strong> 往弘大入口站。",
-        transport: "subway",
-        transportTip: "AREX直達最省時，小孩入站半價。"
+        text: "抵達仁川機場，搭乘預約的<strong>專車機場接送</strong>直達弘大住宿點。",
+        transport: "taxi",
+        transportTip: "車資 70,000 KRW (現金支付)。司機舉牌接機，免搬行李。"
       },
       { 
         time: "13:00", 
@@ -497,4 +497,34 @@ export const ANALYTICS_DATA = [
   { name: '小孩放電', value: 30, color: '#fbbf24' },
   { name: '美食探索', value: 20, color: '#2dd4bf' },
   { name: '醫美手作', value: 15, color: '#818cf8' },
+];
+
+export const TRANSPORT_COMPARISON = [
+  {
+    mode: "AREX 普通車",
+    priceText: "約 4,150 KRW / 人",
+    totalPrice: 12450, // 3人
+    time: "約 50 分鐘",
+    pros: "最低價、不塞車、小孩半價",
+    cons: "需搬行李、人多時無位子",
+    recommend: "行李少、追求高 CP 值者"
+  },
+  {
+    mode: "一般計程車 (Taxi)",
+    priceText: "約 55,000~70,000 KRW",
+    totalPrice: 65000, 
+    time: "約 50-70 分鐘",
+    pros: "門對門、免搬行李、不需預約",
+    cons: "塞車風險、行李箱空間有限",
+    recommend: "3人家庭、不想轉車者"
+  },
+  {
+    mode: "機場接送 (司機舉牌)",
+    priceText: "約 70,000 KRW (現金)",
+    totalPrice: 70000,
+    time: "約 50-70 分鐘",
+    pros: "司機舉牌接機、大車舒適、免搬行李",
+    cons: "需提前預約",
+    recommend: "家庭旅遊、攜帶大件行李者"
+  }
 ];
