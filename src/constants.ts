@@ -12,32 +12,26 @@ export const ITINERARY_DATA: DayData[] = [
         transport: "taxi",
         transportTip: "車資 70,000 KRW (現金支付)。司機舉牌接機，免搬行李。"
       },
-      { 
-        time: "13:00", 
-        text: "午餐：波妞推薦 <strong>豚壽百豬肉湯飯</strong>（濃郁白湯，五歲小孩超愛，嚴禁牛羊者首選）。",
-        transport: "walk",
-        transportTip: "弘大站出口步行5分鐘內。"
-      },
       {
-        time: "14:30",
-        text: "前往住宿點辦理 Check-in 或寄放行李：<br/>🏠 <strong>Julie's Place</strong> (2手房型，弘大站步行1分鐘)。",
+        time: "12:30",
+        text: "抵達飯店辦理 Check-in 或寄放行李：<br/>🏠 <strong>Julie's Place</strong> (弘大站步行 1 分鐘)。",
         transport: "walk",
-        transportTip: "離弘大站超級近，就在商圈核心區。"
+        transportTip: "直接寄放行李，立即輕裝出發！"
       },
       { 
-        time: "15:30", 
-        text: "【豪華晚餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹。",
+        time: "13:30", 
+        text: "【豪華海鮮大餐】搭計程車前往「麻浦農水產物市場」，前往 <strong>3112 攤位</strong> 挑選現蒸帝王蟹。",
         transport: "taxi",
-        transportTip: "3人搭車比轉地鐵方便，且市場採買更省體力。"
+        transportTip: "3人搭車最方便，市場現挑現蒸最新鮮。"
       },
       { 
-        time: "18:00", 
+        time: "16:30", 
         text: "弘大商圈詳細攻略（結合紹紹 & 篠崎泫推薦）：<br/>- <strong>MMLG</strong>：在地知名街頭品牌。<br/>- <strong>What It Isnt</strong>：經典天使 Logo 潮流服飾。<br/>- <strong>Butter</strong>：生活雜貨選物店（小孩超愛）。<br/>- <strong>Lee / Fallett</strong>：休閒與設計感品牌。<br/>- <strong>Sigonggan</strong>：整面牆的耳環飾品天花板。<br/>- <strong>Common Unique</strong>：韓劇常見的甜美韓系穿搭。<br/>- <strong>Supernova</strong>：復古美式校園風服飾。<br/>- <strong>MUSINSA Standard</strong>：韓國版 Uniqlo，必買修身西裝褲。<br/>- <strong>Marithe / emis</strong>：今年最火紅的品牌，弘大旗艦店非常齊全。",
         transport: "taxi",
-        transportTip: "吃飽後建議直接坐計程車回弘大主戰場逛街。"
+        transportTip: "吃飽後直接坐計程車回弘大主戰場開始逛街。"
       },
       { 
-        time: "20:30", 
+        time: "20:00", 
         text: "拍「人生四格」照片，留下珍貴家庭回憶。",
         transport: "walk",
         transportTip: "弘大商圈內隨處可見，步行即可。"
